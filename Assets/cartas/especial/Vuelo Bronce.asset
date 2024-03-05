@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
+  m_Name: Vuelo Bronce
+  m_EditorClassIdentifier: 
+  name: Vuelo Bronce
+  description: El vuelo bronce crea un clima que disminuye todo el poder de las cartas
+    de rango en 3 punto
+  artwork: {fileID: 21300000, guid: aad7821d2eb1cb44d8a60da17aee3c38, type: 3}
+  tipCard: C
+  numSpecial: 12
+  attack: 0
