@@ -1,20 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
-	public new string name;
+	public string Cardname;
 	public string description;
-	public Sprite artwork;
+	public Sprite artworkFront;
+	public Sprite artworkBack;
+	public bool showFront;
 	public string tipCard;
-	public int numSpecial;
+	public int id;
 	public int attack;
+	public int faction;
+	public bool back;
 	public void Print()
-	{
-		Debug.Log(name + ": " + description + " The card tip: " + tipCard);
-	}
 
+	{
+		Debug.Log(Cardname + ": " + description + " The card tip: " + tipCard);
+	}
+	public void ToggleSide()
+	{
+		showFront = !showFront;
+	}
 }
 
 
