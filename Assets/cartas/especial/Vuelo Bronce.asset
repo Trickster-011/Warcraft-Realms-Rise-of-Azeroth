@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
   m_Name: Vuelo Bronce
   m_EditorClassIdentifier: 
-  name: Vuelo Bronce
+  Cardname: Vuelo Bronce
   description: El vuelo bronce crea un clima que disminuye todo el poder de las cartas
     de rango en 3 punto
-  artwork: {fileID: 21300000, guid: aad7821d2eb1cb44d8a60da17aee3c38, type: 3}
+  artworkFront: {fileID: 21300000, guid: aad7821d2eb1cb44d8a60da17aee3c38, type: 3}
+  artworkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
+  showFront: 1
   tipCard: C
-  numSpecial: 12
+  id: 5
   attack: 0
+  faction: 0
+  back: 1
