@@ -28,6 +28,13 @@ public class ButtonClickListener : MonoBehaviour
     // Método que se llama cuando se hace clic en el botón
     void SpawnCard()
     {
+        // Verificar si el panel ya tiene 10 objetos hijos
+        if (panelToSpawnCard.childCount >= 10)
+        {
+            Debug.Log("No se puede agregar más cartas. Límite alcanzado.");
+            return;
+        }
+
         // Obtener una carta aleatoria del mazo
         Card randomCard = deck.GetRandomCard();
 
@@ -36,7 +43,6 @@ public class ButtonClickListener : MonoBehaviour
             // Instanciar el prefab de la carta y colocarlo en el panel especificado
             GameObject newCard = Instantiate(cardPrefab, panelToSpawnCard);
             // Configurar la visualización de la carta con los datos de randomCard
-            // Por ejemplo, podrías tener un componente CardDisplay que maneje la visualización de la carta
             newCard.GetComponent<CardDisplay>().DisplayCard(randomCard);
             deck.RemoveCard(randomCard);
         }
