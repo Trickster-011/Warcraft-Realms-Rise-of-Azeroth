@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
   m_Name: gargola
   m_EditorClassIdentifier: 
-  name: "G\xE1rgola"
+  cardName: Gargola
   description: Elimina la carta con menos poder del rival
-  artwork: {fileID: 21300000, guid: 87f6e9e57c81b184dab0ed691b39266b, type: 3}
+  artWorkFront: {fileID: 21300000, guid: 87f6e9e57c81b184dab0ed691b39266b, type: 3}
+  artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
+  showFront: 1
   tipCard: R
-  numSpecial: 4
+  id: 13
   attack: 7
+  faction: 0
+  back: 0

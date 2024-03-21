@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
   m_Name: Caballero de la muerte profano
   m_EditorClassIdentifier: 
-  name: Caballero Profano
+  cardName: Caballero Profano
   description: Multiplica su poder por la cantidad de caballeros profanos en el campo
-  artwork: {fileID: 21300000, guid: e7919ad8ff15e144db4835b566a180fd, type: 3}
+  artWorkFront: {fileID: 21300000, guid: e7919ad8ff15e144db4835b566a180fd, type: 3}
+  artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
+  showFront: 1
   tipCard: M
-  numSpecial: 6
+  id: 6
   attack: 4
+  faction: 0
+  back: 0

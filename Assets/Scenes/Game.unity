@@ -4424,7 +4424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck: []
-  deckSize: 25
+  deckSize: 26
   cardDatabase: {fileID: 11400000, guid: 3036233959faeea4cafa87e7a99efeb2, type: 2}
   cardPrefab: {fileID: 995092453786725917, guid: 1b560028b0909e340b5e204d97f671cd, type: 3}
   panelToSpawnCard: {fileID: 1940396961}
@@ -4641,21 +4641,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

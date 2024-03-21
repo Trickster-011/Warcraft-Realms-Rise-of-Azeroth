@@ -16,7 +16,7 @@ public class CardDisplay : MonoBehaviour
 	{
 		nameText.text = card.cardName;
 		descriptionText.text = card.description;
-
+		id = card.id;
 		artworkImage.sprite = card.artWorkFront;
 
 		tipCardText.text = card.tipCard.ToString();
@@ -30,7 +30,11 @@ public class CardDisplay : MonoBehaviour
 
 		// Mostrar otros datos de la carta
 		nameText.text = card.cardName;
-		
+		descriptionText.text = card.description;
+
+		artworkImage.sprite = card.artWorkFront;
+		tipCardText.text = card.tipCard.ToString();
+		attackText.text = card.attack.ToString();
 
 		attackText.text = "Attack: " + card.attack.ToString();
 	}

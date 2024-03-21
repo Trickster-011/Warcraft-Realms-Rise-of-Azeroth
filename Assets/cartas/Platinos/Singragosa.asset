@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
   m_Name: Singragosa
   m_EditorClassIdentifier: 
-  name: Sindragosa
+  cardName: Sindragosa
   description: Posee la habilidad de poner Camara helada en el campo
-  artwork: {fileID: 21300000, guid: 8a19929d5f48ead4cb1316b9292a5a71, type: 3}
-  tipCard: R-A
-  numSpecial: 2
+  artWorkFront: {fileID: 21300000, guid: 8a19929d5f48ead4cb1316b9292a5a71, type: 3}
+  artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
+  showFront: 1
+  tipCard: RA
+  id: 15
   attack: 8
+  faction: 0
+  back: 0

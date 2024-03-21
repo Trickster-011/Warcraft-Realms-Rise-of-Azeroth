@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
   m_Name: Exilied
   m_EditorClassIdentifier: 
-  name: Exiliado
+  cardName: Exiliado
   description: Su habilidad permite robar 1 carta del rival
-  artwork: {fileID: 21300000, guid: d0959631e4a6c6246b364475e40894ff, type: 3}
+  artWorkFront: {fileID: 21300000, guid: d0959631e4a6c6246b364475e40894ff, type: 3}
+  artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
+  showFront: 1
   tipCard: M
-  numSpecial: 5
+  id: 20
   attack: 3
+  faction: 0
+  back: 0

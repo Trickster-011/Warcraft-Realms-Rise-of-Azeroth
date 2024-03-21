@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
   m_Name: invencible
   m_EditorClassIdentifier: 
-  name: Invencible
+  cardName: Invencible
   description: Aumenta el poder en 3 de todas las cartas en su fila
-  artwork: {fileID: 21300000, guid: 627cf73bb5582d14c8ccd2a82eaf3504, type: 3}
+  artWorkFront: {fileID: 21300000, guid: 627cf73bb5582d14c8ccd2a82eaf3504, type: 3}
+  artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
+  showFront: 1
   tipCard: M
-  numSpecial: 1
+  id: 14
   attack: 5
+  faction: 0
+  back: 0

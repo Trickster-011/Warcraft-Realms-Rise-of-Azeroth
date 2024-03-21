@@ -4,7 +4,7 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
-    public int deckSize = 25; // Tamaño deseado del mazo
+    public int deckSize = 26; // Tamaño deseado del mazo
     public CardDatabase cardDatabase;
     public GameObject cardPrefab; // Prefab de la carta que quieres instanciar
     public Transform panelToSpawnCard; // Panel donde quieres instanciar la carta
@@ -13,23 +13,22 @@ public class Deck : MonoBehaviour
     {
         if (cardDatabase != null)
         {
-            // Verificar si el mazo tiene menos cartas que el tamaño deseado
-            while (deck.Count < deckSize)
+            // Verificar si hay suficientes cartas disponibles en la base de datos
+            if (cardDatabase.cards.Count < deckSize)
             {
-                // Agregar una carta aleatoria al mazo
-                var randomIndex = Random.Range(0, cardDatabase.cards.Count + 1);
-                var randomCard = cardDatabase.cards[randomIndex];
-                deck.Add(randomCard);
+                Debug.LogError("No hay suficientes cartas en la base de datos para construir el mazo.");
+                return;
             }
 
-            // Imprimir el tamaño de la lista de cartas antes de instanciarlas
-            //Debug.Log("Tamaño del mazo: " + deck.Count);
-
-            // Eliminar todas las cartas existentes en el panel antes de instanciar las nuevas
-            foreach (Transform child in panelToSpawnCard)
+            // Verificar si el panel de spawn de cartas está asignado
+            if (panelToSpawnCard == null)
             {
-                Destroy(child.gameObject);
+                Debug.LogError("No se ha asignado una referencia al panel en el editor de Unity.");
+                return;
             }
+
+            // Construir el mazo
+            BuildDeck();
         }
         else
         {
@@ -37,14 +36,45 @@ public class Deck : MonoBehaviour
         }
     }
 
+    // Método para construir el mazo
+    void BuildDeck()
+    {
+        // Limpiar el mazo antes de construirlo
+        deck.Clear();
+
+        // Añadir cartas aleatorias desde la base de datos al mazo
+        while (deck.Count < deckSize)
+        {
+            // Seleccionar una carta aleatoria desde la base de datos
+            int randomIndex = Random.Range(0, cardDatabase.cards.Count);
+            Card randomCard = cardDatabase.cards[randomIndex];
+
+            // Añadir la carta al mazo
+            deck.Add(randomCard);
+        }
+
+        // Mezclar el mazo después de construirlo
+        Shuffle();
+    }
+
+    // Método para mezclar el mazo
+    void Shuffle()
+    {
+        for (int i = 0; i < deck.Count; i++)
+        {
+            Card temp = deck[i];
+            int randomIndex = Random.Range(i, deck.Count);
+            deck[i] = deck[randomIndex];
+            deck[randomIndex] = temp;
+        }
+    }
+
     // Método para obtener una carta aleatoria del mazo
     public Card GetRandomCard()
     {
-        Shuffle(); // Mezcla el mazo antes de seleccionar una carta aleatoria
-
         if (deck.Count > 0)
         {
-            var randomIndex = Random.Range(0, deck.Count + 1);
+            int randomIndex = Random.Range(0, deck.Count);
             return deck[randomIndex];
         }
         else
@@ -54,17 +84,7 @@ public class Deck : MonoBehaviour
         }
     }
 
-    public void Shuffle()
-    {
-        for (var i = 0; i < deck.Count; i++)
-        {
-            Card temp = deck[i];
-            int randomIndex = Random.Range(i, deck.Count);
-            deck[i] = deck[randomIndex];
-            deck[randomIndex] = temp;
-            deck.Add((Card)temp);
-        }
-    }
+    // Método para remover una carta del mazo
     public void RemoveCard(Card card)
     {
         deck.Remove(card);

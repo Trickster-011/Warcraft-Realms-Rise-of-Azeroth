@@ -12,18 +12,21 @@ public class ButtonClickListener : MonoBehaviour
         // Asegúrate de que se haya asignado una referencia al script Deck y al panel
         if (deck == null)
         {
-            Debug.LogError("No se ha asignado una referencia al script Deck en el editor de Unity.");
+            Debug.LogWarning("No se ha asignado una referencia al script Deck en el editor de Unity. El botón se desactivará.");
+            GetComponent<Button>().interactable = false; // Desactivar el botón
             return;
         }
         if (panelToSpawnCard == null)
         {
-            Debug.LogError("No se ha asignado una referencia al panel en el editor de Unity.");
+            Debug.LogWarning("No se ha asignado una referencia al panel en el editor de Unity. El botón se desactivará.");
+            GetComponent<Button>().interactable = false; // Desactivar el botón
             return;
         }
 
         // Agrega un Listener al botón para que llame al método SpawnCard() cuando se haga clic en él
         GetComponent<Button>().onClick.AddListener(SpawnCard);
     }
+
 
     // Método que se llama cuando se hace clic en el botón
     void SpawnCard()
