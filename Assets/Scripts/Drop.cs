@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,6 +10,7 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        //Debug.Log("OnPointerEnter");
         if (eventData.pointerDrag == null)
         {
             return;
@@ -19,9 +21,9 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
             d.placeholderParent = this.transform;
         }
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
+        //Debug.Log("OnPointerExit");
         if (eventData.pointerDrag == null)
         {
             return;
@@ -32,24 +34,15 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
             d.placeholderParent = d.parentToReturnTo;
         }
     }
-
     public void OnDrop(PointerEventData eventData)
     {
+        Debug.Log(eventData.pointerDrag.name + "was dropped on " + gameObject.name);
         Dragable d = eventData.pointerDrag.GetComponent<Dragable>();
         if (d != null)
         {
-            // Verificar si el objeto padre ya tiene la cantidad máxima de hijos
-            if (this.transform.childCount <= 1)
+            if (TypeOfItem == d.TypeOfItem)
             {
-                if (TypeOfItem == d.TypeOfItem)
-                {
-                    d.parentToReturnTo = this.transform;
-                    Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
-                }
-            }
-            else
-            {
-                Debug.Log("No se puede soltar más objetos. Límite alcanzado.");
+                d.parentToReturnTo = this.transform;
             }
         }
     }

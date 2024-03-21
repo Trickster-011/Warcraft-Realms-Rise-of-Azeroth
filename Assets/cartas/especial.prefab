@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49430fbab97142346a245b734b14f818, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverPanel: {fileID: 0}
   parentToReturnTo: {fileID: 0}
   placeholderParent: {fileID: 0}
   placeholder: {fileID: 0}
@@ -232,12 +231,17 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_AnchoredPosition: {x: -1.839, y: -18.2491}
   m_SizeDelta: {x: 99.3259, y: 128.62}
 =======
   m_AnchoredPosition: {x: -12, y: 38}
   m_SizeDelta: {x: 90.3451, y: 102.3457}
 >>>>>>> parent of 94496979 (v0.7)
+=======
+  m_AnchoredPosition: {x: 2.453, y: 1.0842}
+  m_SizeDelta: {x: 66.5772, y: 86.598}
+>>>>>>> parent of c0cb23e5 (V1.0)
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1991930334125124156
 CanvasRenderer:
@@ -501,8 +505,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.2191, y: -1.6056}
-  m_SizeDelta: {x: 108.0599, y: 129.4649}
+  m_AnchoredPosition: {x: -0.2191, y: -1.3615}
+  m_SizeDelta: {x: 108.0599, y: 129.953}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4711389074980826934
 CanvasRenderer:
@@ -657,8 +661,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.0597, y: 17.443}
-  m_SizeDelta: {x: 61.2176, y: 84.3296}
+  m_AnchoredPosition: {x: 0.99999, y: 14}
+  m_SizeDelta: {x: 63.5552, y: 91.2174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &477967037996315307
 CanvasRenderer:

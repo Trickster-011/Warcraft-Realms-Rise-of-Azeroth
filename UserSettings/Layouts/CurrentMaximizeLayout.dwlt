@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 6370
+  controlID: 115
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 6271
+  controlID: 27
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,8 +169,8 @@ MonoBehaviour:
     y: 0
     width: 789.6
     height: 384.8
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -546,6 +546,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: 406.7479, y: 583.4059, z: -11.582638}
     speed: 2
     m_Value: {x: 406.7479, y: 583.4059, z: -11.582638}
@@ -554,6 +555,11 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 400.73315, y: 305.77496, z: 0}
 >>>>>>> parent of 94496979 (v0.7)
+=======
+    m_Target: {x: 206.96219, y: 122.33193, z: -6.680352}
+    speed: 2
+    m_Value: {x: 206.96219, y: 122.33193, z: -6.680352}
+>>>>>>> parent of c0cb23e5 (V1.0)
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -604,6 +610,7 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: 1425.9952
     speed: 2
     m_Value: 1425.9952
@@ -612,6 +619,11 @@ MonoBehaviour:
     speed: 2
     m_Value: 471.77148
 >>>>>>> parent of 94496979 (v0.7)
+=======
+    m_Target: 759.90564
+    speed: 2
+    m_Value: 759.90564
+>>>>>>> parent of c0cb23e5 (V1.0)
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -681,8 +693,8 @@ MonoBehaviour:
     y: 0
     width: 171.20001
     height: 756.4
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
@@ -728,10 +740,14 @@ MonoBehaviour:
       m_SelectedIDs: 
       m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_ExpandedIDs: 26fbffff28fbffff265600006e560000c2570000d2570000
 =======
       m_ExpandedIDs: fefaffff66560000ba570000
 >>>>>>> parent of 94496979 (v0.7)
+=======
+      m_ExpandedIDs: 90f8ffff28fbffff6e560000ac570000d2570000
+>>>>>>> parent of c0cb23e5 (V1.0)
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -774,8 +790,8 @@ MonoBehaviour:
     y: 0
     width: 280.8
     height: 756.4
-  m_MinSize: {x: 232, y: 271}
-  m_MaxSize: {x: 10002, y: 10021}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 10}
   m_Panes:
   - {fileID: 10}
@@ -844,12 +860,16 @@ MonoBehaviour:
 <<<<<<< HEAD
     m_SelectedIDs: 3a590000
     m_LastClickedID: 22842
+<<<<<<< HEAD
     m_ExpandedIDs: 000000002e59000000ca9a3b
 =======
     m_SelectedIDs: 10590000
     m_LastClickedID: 22800
     m_ExpandedIDs: 00000000fa580000fc58000000ca9a3b
 >>>>>>> parent of 94496979 (v0.7)
+=======
+    m_ExpandedIDs: 000000002e590000305900003a59000000ca9a3b
+>>>>>>> parent of c0cb23e5 (V1.0)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -878,10 +898,14 @@ MonoBehaviour:
     m_SelectedIDs: 
     m_LastClickedID: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000002e59000000ca9a3b
 =======
     m_ExpandedIDs: 00000000fa580000fc580000
 >>>>>>> parent of 94496979 (v0.7)
+=======
+    m_ExpandedIDs: 000000002e59000030590000
+>>>>>>> parent of c0cb23e5 (V1.0)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -907,12 +931,17 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedInstanceIDs: fa570000
     m_LastClickedInstanceID: 22522
 =======
     m_SelectedInstanceIDs: 7c570000
     m_LastClickedInstanceID: 22396
 >>>>>>> parent of 94496979 (v0.7)
+=======
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+>>>>>>> parent of c0cb23e5 (V1.0)
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 00000000c85e00004e580000d05e0000fa5e0000de5e0000f25e0000d65e0000025f0000fe5e0000ee5e0000ea5e00009e580000da5e0000e65e0000e25e0000
     m_RenameOverlay:
@@ -961,8 +990,8 @@ MonoBehaviour:
     y: 0
     width: 280
     height: 756.4
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -1009,12 +1038,17 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LastInspectedObjectInstanceID: 22522
   m_LastVerticalScrollValue: 752.4001
 =======
   m_LastInspectedObjectInstanceID: 22396
   m_LastVerticalScrollValue: 24
 >>>>>>> parent of 94496979 (v0.7)
+=======
+  m_LastInspectedObjectInstanceID: -1
+  m_LastVerticalScrollValue: 0
+>>>>>>> parent of c0cb23e5 (V1.0)
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
