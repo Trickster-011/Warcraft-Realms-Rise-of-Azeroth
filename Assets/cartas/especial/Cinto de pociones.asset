@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
   m_Name: Cinto de pociones
   m_EditorClassIdentifier: 
-  Cardname: Cinto de Pociones
+  Cardname: 
   description: Aumenta en 1 el poder
-  artworkFront: {fileID: 21300000, guid: f7b3df5fb6fe023439990acb8c328803, type: 3}
-  artworkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
-  showFront: 1
-  tipCard: AU
-  id: 1
+  artwork: {fileID: 21300000, guid: f7b3df5fb6fe023439990acb8c328803, type: 3}
+  tipCard: A
+  id: 0
   attack: 0
   faction: 0
-  back: 1

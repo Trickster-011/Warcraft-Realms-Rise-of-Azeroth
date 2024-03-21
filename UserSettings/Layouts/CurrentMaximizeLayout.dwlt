@@ -61,10 +61,8 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
-  m_SerializedViewNames:
-  - UnityEditor.DeviceSimulation.SimulatorWindow
-  m_SerializedViewValues:
-  - D:\Warcraft-Realms-Rise-of-Azeroth\Library\PlayModeViewStates\bd4df02dabc14704e9e55ef2e6cdea79
+  m_SerializedViewNames: []
+  m_SerializedViewValues: []
   m_PlayModeViewName: GameView
   m_ShowGizmos: 0
   m_TargetDisplay: 0
@@ -547,9 +545,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 406.7479, y: 583.4059, z: -11.582638}
     speed: 2
     m_Value: {x: 406.7479, y: 583.4059, z: -11.582638}
+=======
+    m_Target: {x: 400.73315, y: 305.77496, z: 0}
+    speed: 2
+    m_Value: {x: 400.73315, y: 305.77496, z: 0}
+>>>>>>> parent of 94496979 (v0.7)
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -599,9 +603,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< HEAD
     m_Target: 1425.9952
     speed: 2
     m_Value: 1425.9952
+=======
+    m_Target: 471.77148
+    speed: 2
+    m_Value: 471.77148
+>>>>>>> parent of 94496979 (v0.7)
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -717,7 +727,11 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
+<<<<<<< HEAD
       m_ExpandedIDs: 26fbffff28fbffff265600006e560000c2570000d2570000
+=======
+      m_ExpandedIDs: fefaffff66560000ba570000
+>>>>>>> parent of 94496979 (v0.7)
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -812,7 +826,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/cartas
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -820,16 +834,22 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/cartas
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Warcraft-Realms-Rise-of-Azeroth
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 3a590000
     m_LastClickedID: 22842
     m_ExpandedIDs: 000000002e59000000ca9a3b
+=======
+    m_SelectedIDs: 10590000
+    m_LastClickedID: 22800
+    m_ExpandedIDs: 00000000fa580000fc58000000ca9a3b
+>>>>>>> parent of 94496979 (v0.7)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -857,7 +877,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 000000002e59000000ca9a3b
+=======
+    m_ExpandedIDs: 00000000fa580000fc580000
+>>>>>>> parent of 94496979 (v0.7)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -882,8 +906,13 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
+<<<<<<< HEAD
     m_SelectedInstanceIDs: fa570000
     m_LastClickedInstanceID: 22522
+=======
+    m_SelectedInstanceIDs: 7c570000
+    m_LastClickedInstanceID: 22396
+>>>>>>> parent of 94496979 (v0.7)
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 00000000c85e00004e580000d05e0000fa5e0000de5e0000f25e0000d65e0000025f0000fe5e0000ee5e0000ea5e00009e580000da5e0000e65e0000e25e0000
     m_RenameOverlay:
@@ -979,8 +1008,13 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
+<<<<<<< HEAD
   m_LastInspectedObjectInstanceID: 22522
   m_LastVerticalScrollValue: 752.4001
+=======
+  m_LastInspectedObjectInstanceID: 22396
+  m_LastVerticalScrollValue: 24
+>>>>>>> parent of 94496979 (v0.7)
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:

@@ -1,27 +1,24 @@
-using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Deck : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
-    public int deckSize = 25; // Tamaño deseado del mazo
+    public int deckSize;
     public CardDatabase cardDatabase;
-    public GameObject cardPrefab; // Prefab de la carta que quieres instanciar
-    public Transform panelToSpawnCard; // Panel donde quieres instanciar la carta
 
     void Start()
     {
+        deckSize = 25;
         if (cardDatabase != null)
         {
-            // Verificar si el mazo tiene menos cartas que el tamaño deseado
-            while (deck.Count < deckSize)
+            for (int i = 0; i < deckSize; i++)
             {
-                // Agregar una carta aleatoria al mazo
                 int randomIndex = Random.Range(0, cardDatabase.cards.Count);
                 Card randomCard = cardDatabase.cards[randomIndex];
                 deck.Add(randomCard);
             }
+<<<<<<< HEAD
 
             // Imprimir el tamaño de la lista de cartas antes de instanciarlas
             //Debug.Log("Tamaño del mazo: " + deck.Count);
@@ -31,6 +28,8 @@ public class Deck : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
+=======
+>>>>>>> parent of 94496979 (v0.7)
         }
         else
         {
@@ -38,11 +37,16 @@ public class Deck : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     // Método para obtener una carta aleatoria del mazo
+=======
+    void Update()
+    {
+        // No es necesario hacer nada en Update en este momento
+    }
+>>>>>>> parent of 94496979 (v0.7)
     public Card GetRandomCard()
     {
-        Shuffle(); // Mezcla el mazo antes de seleccionar una carta aleatoria
-
         if (deck.Count > 0)
         {
             int randomIndex = Random.Range(0, deck.Count);
@@ -54,6 +58,7 @@ public class Deck : MonoBehaviour
             return null;
         }
     }
+<<<<<<< HEAD
 
     public void Shuffle()
     {
@@ -69,4 +74,6 @@ public class Deck : MonoBehaviour
     {
         deck.Remove(card);
     }
+=======
+>>>>>>> parent of 94496979 (v0.7)
 }
