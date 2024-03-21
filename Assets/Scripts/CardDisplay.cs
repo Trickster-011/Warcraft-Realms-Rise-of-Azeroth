@@ -14,28 +14,24 @@ public class CardDisplay : MonoBehaviour
 	public Text attackText;
 	void Start()
 	{
-		nameText.text = card.Cardname;
+		nameText.text = card.cardName;
 		descriptionText.text = card.description;
 
-		artworkImage.sprite = card.artworkFront;
+		artworkImage.sprite = card.artWorkFront;
 
 		tipCardText.text = card.tipCard.ToString();
 		attackText.text = card.attack.ToString();
 	}
 	public void DisplayCard(Card card)
 	{
+
 		// Mostrar la parte delantera o trasera de la carta según el valor booleano showFront
-		if (card.showFront)
-		{
-			artworkImage.sprite = card.artworkFront;
-		}
-		else
-		{
-			artworkImage.sprite = card.artworkBack;
-		}
+		artworkImage.sprite = card.showFront ? card.artWorkFront : card.artWorkBack;
 
 		// Mostrar otros datos de la carta
-		nameText.text = card.Cardname;
+		nameText.text = card.cardName;
+		
+
 		attackText.text = "Attack: " + card.attack.ToString();
 	}
 }

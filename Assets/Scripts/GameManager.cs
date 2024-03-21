@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    enum GameState { PREPARED, PLAY, GAMEOVER }
+    enum GameState
+    {
+        PREPARED, 
+        PLAY, 
+        GAMEOVER
+    }
     private GameState Status;
     // Start is called before the first frame update
     void Start()

@@ -8,12 +8,21 @@ using System.Runtime.ExceptionServices;
 
 public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+
+    public GameObject hoverPanel; // Referencia al panel donde se mostrará la carta más grande
+
     public Transform parentToReturnTo = null;
+
     public Transform placeholderParent = null;
 
     public GameObject placeholder = null;
     public enum Slot { MELEE, ASEDIO, RANGE, AUMENTO, CLIMA };
     public Slot TypeOfItem = Slot.MELEE;
+    void Star()
+    {
+        hoverPanel = GameObject.Find("Hover");
+
+    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
@@ -31,6 +40,16 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         this.transform.SetParent(this.transform.parent.parent);
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+        GameObject hoverCard = Instantiate(this.gameObject, hoverPanel.transform);
+        hoverCard.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f); // Ajusta el valor según sea necesario
+        hoverCard.SetActive(true);
+
+        // Calcula la posición central del panel de hover
+        RectTransform panelRect = hoverPanel.GetComponent<RectTransform>();
+        Vector3 panelCenter = panelRect.position + new Vector3(panelRect.rect.width / 2, panelRect.rect.height / 2, 0);
+
+        // Ajusta la posición de la carta más grande para que se alinee con el centro del panel
+        hoverCard.transform.position = panelCenter;
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -60,7 +79,14 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         Destroy(placeholder);
-
+        foreach (Transform child in hoverPanel.transform)
+        {
+            if (child.gameObject.name == this.gameObject.name)
+            {
+                Destroy(child.gameObject);
+                break;
+            }
+        }
     }
 }
 

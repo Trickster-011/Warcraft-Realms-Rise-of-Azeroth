@@ -4,67 +4,47 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
-    public int deckSize;
+    public int deckSize = 25; // Tamaño deseado del mazo
     public CardDatabase cardDatabase;
+    public GameObject cardPrefab; // Prefab de la carta que quieres instanciar
+    public Transform panelToSpawnCard; // Panel donde quieres instanciar la carta
 
     void Start()
     {
-        deckSize = 25;
         if (cardDatabase != null)
         {
-            for (int i = 0; i < deckSize; i++)
+            // Verificar si el mazo tiene menos cartas que el tamaño deseado
+            while (deck.Count < deckSize)
             {
-                int randomIndex = Random.Range(0, cardDatabase.cards.Count);
-                Card randomCard = cardDatabase.cards[randomIndex];
+                // Agregar una carta aleatoria al mazo
+                var randomIndex = Random.Range(0, cardDatabase.cards.Count + 1);
+                var randomCard = cardDatabase.cards[randomIndex];
                 deck.Add(randomCard);
             }
-<<<<<<< HEAD
 
             // Imprimir el tamaño de la lista de cartas antes de instanciarlas
-            Debug.Log("Tamaño del mazo: " + deck.Count);
+            //Debug.Log("Tamaño del mazo: " + deck.Count);
 
             // Eliminar todas las cartas existentes en el panel antes de instanciar las nuevas
             foreach (Transform child in panelToSpawnCard)
             {
                 Destroy(child.gameObject);
             }
-<<<<<<< HEAD
-=======
->>>>>>> parent of 94496979 (v0.7)
-=======
-
-            // Instanciar todas las cartas en el mazo en el panel especificado
-            foreach (Card card in deck)
-            {
-                // Instanciar el prefab de la carta y colocarlo en el panel especificado
-                GameObject newCard = Instantiate(cardPrefab, panelToSpawnCard);
-                // Configurar la visualización de la carta con los datos de la carta actual
-                newCard.GetComponent<CardDisplay>().DisplayCard(card);
-            }
->>>>>>> parent of c0cb23e5 (V1.0)
         }
         else
         {
             Debug.LogError("No se ha asignado una referencia a la base de datos de cartas en el script Deck.");
         }
     }
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-=======
->>>>>>> parent of c0cb23e5 (V1.0)
     // Método para obtener una carta aleatoria del mazo
-=======
-    void Update()
-    {
-        // No es necesario hacer nada en Update en este momento
-    }
->>>>>>> parent of 94496979 (v0.7)
     public Card GetRandomCard()
     {
+        Shuffle(); // Mezcla el mazo antes de seleccionar una carta aleatoria
+
         if (deck.Count > 0)
         {
-            int randomIndex = Random.Range(0, deck.Count);
+            var randomIndex = Random.Range(0, deck.Count + 1);
             return deck[randomIndex];
         }
         else
@@ -73,23 +53,20 @@ public class Deck : MonoBehaviour
             return null;
         }
     }
-<<<<<<< HEAD
 
-    // Método para mezclar el mazo
     public void Shuffle()
     {
-        for (int i = 0; i < deck.Count; i++)
+        for (var i = 0; i < deck.Count; i++)
         {
             Card temp = deck[i];
             int randomIndex = Random.Range(i, deck.Count);
             deck[i] = deck[randomIndex];
             deck[randomIndex] = temp;
+            deck.Add((Card)temp);
         }
     }
     public void RemoveCard(Card card)
     {
         deck.Remove(card);
     }
-=======
->>>>>>> parent of 94496979 (v0.7)
 }

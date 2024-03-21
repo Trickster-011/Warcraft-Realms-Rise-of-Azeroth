@@ -5,10 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
-	public string Cardname;
+	public string cardName;
 	public string description;
-	public Sprite artworkFront;
-	public Sprite artworkBack;
+	public Sprite artWorkFront;
+	public Sprite artWorkBack;
 	public bool showFront;
 	public string tipCard;
 	public int id;
@@ -18,7 +18,7 @@ public class Card : ScriptableObject
 	public void Print()
 
 	{
-		Debug.Log(Cardname + ": " + description + " The card tip: " + tipCard);
+		Debug.Log(cardName + ": " + description + " The card tip: " + tipCard);
 	}
 	public void ToggleSide()
 	{

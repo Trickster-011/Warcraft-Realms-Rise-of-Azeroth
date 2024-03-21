@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "New Card Database", menuName = "Cards/Card Database")]
 public class CardDatabase : ScriptableObject
@@ -8,13 +9,6 @@ public class CardDatabase : ScriptableObject
 
     public Card GetCardByName(string name)
     {
-        foreach (Card card in cards)
-        {
-            if (card.Cardname == name)
-            {
-                return card;
-            }
-        }
-        return null; // Si no se encuentra ninguna carta con el nombre dado
+        return cards.FirstOrDefault(card => card.cardName == name);
     }
 }
