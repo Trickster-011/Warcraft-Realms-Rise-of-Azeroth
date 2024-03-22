@@ -16,7 +16,7 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Transform placeholderParent = null;
 
     public GameObject placeholder = null;
-    public enum Slot { MELEE, ASEDIO, RANGE, AUMENTO, CLIMA };
+    public enum Slot { MELEE, ASEDIO, RANGE, AUMENTO, CLIMA, HAND };
     public Slot TypeOfItem = Slot.MELEE;
     void Star()
     {
