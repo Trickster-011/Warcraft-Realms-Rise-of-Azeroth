@@ -1,17 +1,14 @@
 //using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 [System.Serializable]
 
-public class Deck : MonoBehaviour
+public class Deck2 : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
     public int deckSize = 26; // Tamaño deseado del mazo
     public CardDatabase cardDatabase;
-    public GameObject especial; // Prefab de la carta que quieres instanciar
-    public GameObject gold;
-    public GameObject platine;
+    public GameObject cardPrefab; // Prefab de la carta que quieres instanciar
     public Transform panelToSpawnCard; // Panel donde quieres instanciar la carta
 
     void Start()
@@ -109,50 +106,11 @@ public class Deck : MonoBehaviour
         if (randomCard != null)
         {
             RemoveCard(randomCard);
-
-            // Determinar qué prefab usar según el tipo de carta
-            GameObject cardPrefabToUse = null;
-            if (randomCard.tipForPrefab == "E" )
-            {
-                cardPrefabToUse = especial; // Asigna el prefab correspondiente al tipo 1;
-        }
-            else if (randomCard.tipForPrefab == "G")
-            {
-                cardPrefabToUse = gold;// Asigna el prefab correspondiente al tipo 2;
-        }
-            // Agrega más condiciones según sea necesario para otros tipos de carta
-            else if(randomCard.tipForPrefab == "P")
-            {
-                cardPrefabToUse = platine;
-        }
-            if (cardPrefabToUse != null)
-            {
-                // Instanciar el prefab de la carta y colocarlo en el panel especificado
-                GameObject newCardObject = Instantiate(cardPrefabToUse, panelToSpawnCard);
-
-                // Obtener el componente CardDisplay del nuevo objeto de tarjeta
-                CardDisplay newCardDisplay = newCardObject.GetComponent<CardDisplay>();
-
-                if (newCardDisplay != null)
-                {
-                    // Asignar los datos del ScriptableObject de la carta al CardDisplay
-                    newCardDisplay.DisplayCard(randomCard);
-                }
-                else
-                {
-                    Debug.LogError("No se pudo encontrar el componente CardDisplay en el prefab de la carta.");
-                }
-            }
-            else
-            {
-                Debug.LogError("Prefab de carta no definido para el tipo de carta: " + randomCard.tipForPrefab);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("El mazo está vacío. No se puede obtener una carta aleatoria.");
+            // Instanciar el prefab de la carta y colocarlo en el panel especificado
+            GameObject newCard = Instantiate(cardPrefab, panelToSpawnCard);
+            // Configurar la visualización de la carta con los datos de randomCard
+            newCard.GetComponent<CardDisplay>().DisplayCard(randomCard);
+            
         }
     }
-
-
 }

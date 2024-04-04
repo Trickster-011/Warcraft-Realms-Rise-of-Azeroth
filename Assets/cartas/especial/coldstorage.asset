@@ -19,6 +19,7 @@ MonoBehaviour:
   artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
   showFront: 1
   tipCard: C
+  tipForPrefab: E
   id: 2
   attack: 0
   faction: 0

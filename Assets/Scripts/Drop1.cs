@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Dragable.Slot TypeOfItem = Dragable.Slot.MELEE;
+    public Dragable.Slot TypeOfItem;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -46,6 +46,28 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                     d.parentToReturnTo = this.transform;
                     Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
                 }
+                else if (TypeOfItem == Dragable.Slot.MELEE)
+                {
+                    if( d.TypeOfItem == Dragable.Slot.MELEEASEDIO || d.TypeOfItem == Dragable.Slot.MELEEASEDIORANGE){
+                        d.parentToReturnTo = this.transform;
+                        Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                    }
+                else if(TypeOfItem == Dragable.Slot.RANGE)
+                        if ( d.TypeOfItem == Dragable.Slot.ASEDIORANGE || d.TypeOfItem == Dragable.Slot.MELEEASEDIORANGE)
+                        {
+                            d.parentToReturnTo = this.transform;
+                            Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                        }
+                }
+                else if (TypeOfItem == Dragable.Slot.ASEDIO)
+                {
+                    if ( d.TypeOfItem == Dragable.Slot.ASEDIORANGE || d.TypeOfItem == Dragable.Slot.MELEEASEDIORANGE)
+                    {
+                        d.parentToReturnTo = this.transform;
+                        Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                    }
+                }
+
             }
             else
             {

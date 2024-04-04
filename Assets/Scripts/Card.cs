@@ -11,7 +11,8 @@ public class Card : ScriptableObject
 	public Sprite artWorkBack;
 	public bool showFront;
 	public string tipCard;
-	public int id;
+    public string tipForPrefab;
+    public int id;
 	public int attack;
 	public int faction;
 	public bool back;

@@ -11,7 +11,8 @@ public class CardDisplay : MonoBehaviour
 	public Text descriptionText;
 	public Image artworkImage;
 	public Text tipCardText;
-	public Text attackText;
+    public Text tipForPrefab;
+    public Text attackText;
 	void Start()
 	{
 		nameText.text = card.cardName;
@@ -21,7 +22,8 @@ public class CardDisplay : MonoBehaviour
 
 		tipCardText.text = card.tipCard.ToString();
 		attackText.text = card.attack.ToString();
-	}
+        tipForPrefab.text = card.tipForPrefab.ToString();
+    }
 	public void DisplayCard(Card card)
 	{
 
@@ -35,6 +37,7 @@ public class CardDisplay : MonoBehaviour
 		artworkImage.sprite = card.artWorkFront;
 		tipCardText.text = card.tipCard.ToString();
 		attackText.text = card.attack.ToString();
+		tipForPrefab.text = card.tipForPrefab.ToString();
 
 		attackText.text = "Attack: " + card.attack.ToString();
 	}

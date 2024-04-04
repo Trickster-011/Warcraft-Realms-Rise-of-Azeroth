@@ -46,6 +46,28 @@ public class Drop2 : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointer
                     d.parentToReturnTo = this.transform;
                     Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
                 }
+                else if (TypeOfItem == Dragable.Slot.MELEE)
+                {
+                    if (d.TypeOfItem == Dragable.Slot.MELEEASEDIO || d.TypeOfItem == Dragable.Slot.MELEEASEDIORANGE)
+                    {
+                        d.parentToReturnTo = this.transform;
+                        Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                    }
+                    else if (TypeOfItem == Dragable.Slot.RANGE)
+                        if (d.TypeOfItem == Dragable.Slot.ASEDIORANGE || d.TypeOfItem == Dragable.Slot.MELEEASEDIORANGE)
+                        {
+                            d.parentToReturnTo = this.transform;
+                            Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                        }
+                }
+                else if (TypeOfItem == Dragable.Slot.ASEDIO)
+                {
+                    if (d.TypeOfItem == Dragable.Slot.MELEEASEDIO || d.TypeOfItem == Dragable.Slot.ASEDIORANGE || d.TypeOfItem == Dragable.Slot.MELEEASEDIORANGE)
+                    {
+                        d.parentToReturnTo = this.transform;
+                        Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                    }
+                }
             }
             else
             {
@@ -53,4 +75,5 @@ public class Drop2 : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointer
             }
         }
     }
+}
 }

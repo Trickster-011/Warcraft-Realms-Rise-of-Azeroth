@@ -1,26 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using System.Runtime.ExceptionServices;
 
 public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-
-    public GameObject hoverPanel; // Referencia al panel donde se mostrará la carta más grande
-
+    public GameObject hoverPanel = null; // Referencia al panel donde se mostrará la carta más grande
     public Transform parentToReturnTo = null;
-
     public Transform placeholderParent = null;
-
     public GameObject placeholder = null;
-    public enum Slot { MELEE, ASEDIO, RANGE, AUMENTO, CLIMA, HAND };
-    public Slot TypeOfItem = Slot.MELEE;
-    void Star()
+    public GameObject hoverCard = null;
+
+    public Card card; // Referencia a la carta asociada
+
+    public enum Slot { MELEE, ASEDIO, RANGE, MELEEASEDIO, ASEDIORANGE, MELEEASEDIORANGE, AUMENTO, CLIMA, HAND };
+    public Slot TypeOfItem;
+
+    void Start()
     {
-        hoverPanel = GameObject.Find("Hover");
+        hoverPanel = GameObject.Find("hover");
+    }
+
+    public void Setup(Card card)
+    {
+        this.card = card;
+   
+        if (card != null)
+        {
+            if (card.tipCard == "M")
+            {
+                TypeOfItem = Slot.MELEE;
+            }
+            else if (card.tipCard == "A")
+            {
+                TypeOfItem = Slot.ASEDIO;
+            }
+            else if (card.tipCard == "R")
+            {
+                TypeOfItem = Slot.RANGE;
+            }
+            else if (card.tipCard == "MA")
+            {
+                TypeOfItem = Slot.MELEEASEDIO;
+            }
+            else if (card.tipCard == "RA")
+            {
+                TypeOfItem = Slot.ASEDIORANGE;
+            }
+            else if (card.tipCard == "MRA")
+            {
+                TypeOfItem = Slot.MELEEASEDIORANGE;
+            }
+            // Y así sucesivamente para otros tipos de carta
+        }
+    }
+void Star()
+    {
+        hoverPanel = GameObject.Find("hover");
 
     }
     public void OnBeginDrag(PointerEventData eventData)
@@ -71,6 +108,26 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
         placeholder.transform.SetSiblingIndex(newSibiligIndex);
     }
+    public void OnDrop(PointerEventData eventData)
+    {
+        Dragable d = eventData.pointerDrag.GetComponent<Dragable>();
+        if (d != null)
+        {
+            // Aquí agregamos la lógica adicional para permitir colocar objetos MELEE en las áreas MELEEASEDIO y MELEEASEDIORANGE
+            if ((TypeOfItem == Slot.MELEE && (d.TypeOfItem == Slot.MELEEASEDIO || d.TypeOfItem == Slot.MELEEASEDIORANGE))
+                || (TypeOfItem == Slot.MELEEASEDIO && d.TypeOfItem == Slot.MELEE)
+                || (TypeOfItem == Slot.MELEEASEDIORANGE && d.TypeOfItem == Slot.MELEE))
+            {
+                // Permitimos el drop
+                d.parentToReturnTo = this.transform;
+            }
+            else
+            {
+                // No permitimos el drop
+                d.parentToReturnTo = d.placeholderParent;
+            }
+        }
+    }
     public void OnEndDrag(PointerEventData eventData)
 
     {
@@ -81,11 +138,7 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         Destroy(placeholder);
         foreach (Transform child in hoverPanel.transform)
         {
-            if (child.gameObject.name == this.gameObject.name)
-            {
-                Destroy(child.gameObject);
-                break;
-            }
+            Destroy(child.gameObject);
         }
     }
 }
