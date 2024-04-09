@@ -1,7 +1,7 @@
 //using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using static Dragable;
 [System.Serializable]
 
 public class Deck : MonoBehaviour
@@ -112,35 +112,76 @@ public class Deck : MonoBehaviour
 
             // Determinar qué prefab usar según el tipo de carta
             GameObject cardPrefabToUse = null;
-            if (randomCard.tipForPrefab == "E" )
+            switch (randomCard.tipForPrefab)
             {
-                cardPrefabToUse = especial; // Asigna el prefab correspondiente al tipo 1;
-        }
-            else if (randomCard.tipForPrefab == "G")
+                case "E":
+                    cardPrefabToUse = especial;
+                    break;
+                case "G":
+                    cardPrefabToUse = gold;
+                    break;
+                case "P":
+                    cardPrefabToUse = platine;
+                    break;
+                // Agrega más casos según sea necesario para otros tipos de carta
+                default:
+                    Debug.LogWarning("Tipo de carta no reconocido para asignar un prefab: " + randomCard.tipForPrefab);
+                    break;
+            }
+        
+        if (cardPrefabToUse != null)
             {
-                cardPrefabToUse = gold;// Asigna el prefab correspondiente al tipo 2;
-        }
-            // Agrega más condiciones según sea necesario para otros tipos de carta
-            else if(randomCard.tipForPrefab == "P")
-            {
-                cardPrefabToUse = platine;
-        }
-            if (cardPrefabToUse != null)
-            {
+
                 // Instanciar el prefab de la carta y colocarlo en el panel especificado
                 GameObject newCardObject = Instantiate(cardPrefabToUse, panelToSpawnCard);
-
+                
                 // Obtener el componente CardDisplay del nuevo objeto de tarjeta
                 CardDisplay newCardDisplay = newCardObject.GetComponent<CardDisplay>();
-
-                if (newCardDisplay != null)
+                // Obtener el componente Dragable del nuevo objeto de tarjeta
+                //Dragable newDragable = newCardObject.GetComponent<Dragable>();
+                // Asignar los datos del ScriptableObject de la carta al CardDisplay
+                switch (randomCard.tipCard)
                 {
-                    // Asignar los datos del ScriptableObject de la carta al CardDisplay
-                    newCardDisplay.DisplayCard(randomCard);
+                    case "M":
+                        newCardObject.GetComponent<Dragable>().TypeOfItem = Slot.MELEE;
+                        break;
+                    case "A":
+                        newCardDisplay.GetComponent<Dragable>().TypeOfItem = Slot.ASEDIO;
+                        break;
+                    case "R":
+                        newCardDisplay.GetComponent<Dragable>().TypeOfItem = Slot.RANGE;
+                        break;
+                    case "MA":
+                        newCardDisplay.GetComponent<Dragable>().TypeOfItem = Slot.MELEEASEDIO;
+                        break;
+                    case "RA":
+                        newCardDisplay.GetComponent<Dragable>().TypeOfItem = Slot.ASEDIORANGE;
+                        break;
+                    case "MRA":
+                        newCardDisplay.GetComponent<Dragable>().TypeOfItem = Slot.MELEEASEDIORANGE;
+                        break;
+                    case "C":
+                        newCardDisplay.GetComponent<Dragable>().TypeOfItem = Slot.CLIMA;
+                        break;
+                    case "AU":
+                        newCardDisplay.GetComponent<Dragable>().TypeOfItem = Slot.AUMENTO;
+                        break;
+                    case "E":
+                        newCardDisplay.GetComponent<Dragable>().TypeOfItem = Slot.MELEEASEDIORANGE;
+                        break;
+                    // Agrega más casos según sea necesario para otros tipos de carta
+                    default:
+                        // Manejo de caso por defecto o lanzar una excepción si es necesario
+                        Debug.LogWarning("Tipo de carta no reconocido: " + randomCard.tipCard);
+                        break;
                 }
+                newCardDisplay.DisplayCard(randomCard);
+                
+                    }
+                
                 else
                 {
-                    Debug.LogError("No se pudo encontrar el componente CardDisplay en el prefab de la carta.");
+                    Debug.LogError("No se pudo encontrar el componente Dragable en el prefab de la carta.");
                 }
             }
             else
@@ -148,11 +189,10 @@ public class Deck : MonoBehaviour
                 Debug.LogError("Prefab de carta no definido para el tipo de carta: " + randomCard.tipForPrefab);
             }
         }
-        else
-        {
-            Debug.LogWarning("El mazo está vacío. No se puede obtener una carta aleatoria.");
-        }
+     
     }
+      
+    
 
 
-}
+    

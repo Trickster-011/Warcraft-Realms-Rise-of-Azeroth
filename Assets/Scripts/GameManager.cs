@@ -1,34 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    enum GameState
-    {
-        PREPARED, 
-        PLAY, 
-        GAMEOVER
-    }
-    private GameState Status;
-    // Start is called before the first frame update
+    public TextMeshProUGUI meleeAttack;
+    public TextMeshProUGUI rangedAttack;
+    public TextMeshProUGUI asedioAttack;
+    public TextMeshProUGUI totalAttack;
+    
     void Start()
     {
-        Status = GameState.PREPARED;
+        
     }
-
-    // Update is called once per frame
     void Update()
     {
-        switch (Status)
-        {
-            case GameState.PREPARED:
-                break;
-            case GameState.PLAY:
-                break;
-            case GameState.GAMEOVER:
-                break;
-        }
+        int MeleeAttack = int.Parse(meleeAttack.text);
+        int RangeAttack = int.Parse(rangedAttack.text);
+        int AsedioAttack = int.Parse(asedioAttack.text);
+        int TotalAttack = MeleeAttack + RangeAttack + AsedioAttack;
+        totalAttack.text = TotalAttack.ToString() ;
     }
 }

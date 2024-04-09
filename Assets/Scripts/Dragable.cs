@@ -16,50 +16,22 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public enum Slot { MELEE, ASEDIO, RANGE, MELEEASEDIO, ASEDIORANGE, MELEEASEDIORANGE, AUMENTO, CLIMA, HAND };
     public Slot TypeOfItem;
+    public bool isBlocked = false;
 
     void Start()
     {
         hoverPanel = GameObject.Find("hover");
     }
 
-    public void Setup(Card card)
+    public void BlockDragable()
     {
-        this.card = card;
-   
-        if (card != null)
-        {
-            if (card.tipCard == "M")
-            {
-                TypeOfItem = Slot.MELEE;
-            }
-            else if (card.tipCard == "A")
-            {
-                TypeOfItem = Slot.ASEDIO;
-            }
-            else if (card.tipCard == "R")
-            {
-                TypeOfItem = Slot.RANGE;
-            }
-            else if (card.tipCard == "MA")
-            {
-                TypeOfItem = Slot.MELEEASEDIO;
-            }
-            else if (card.tipCard == "RA")
-            {
-                TypeOfItem = Slot.ASEDIORANGE;
-            }
-            else if (card.tipCard == "MRA")
-            {
-                TypeOfItem = Slot.MELEEASEDIORANGE;
-            }
-            // Y así sucesivamente para otros tipos de carta
-        }
+        isBlocked = true;
     }
-void Star()
+    public void UnblockDragable()
     {
-        hoverPanel = GameObject.Find("hover");
+        isBlocked = false;
+    }
 
-    }
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("OnBeginDrag");
