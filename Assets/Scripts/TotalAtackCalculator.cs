@@ -25,16 +25,34 @@ public class TotalAttackCalculator : MonoBehaviour
         int totalAttack = 0;
         foreach (Transform child in panel)
         {
-            // Verificar si el hijo tiene el componente que almacena el ataque (ajusta esto según tu implementación)
+            // Verificar si el hijo tiene el componente que almacena el ataque
             var attackComponent = child.GetComponent<CardDisplay>();
 
-            // Si el hijo tiene el componente que almacena el ataque, sumar su valor al total
-            if (attackComponent != null)
+            // Si el componente es nulo, continuar con el siguiente hijo
+            if (attackComponent == null)
             {
-                int childAttack = int.Parse(attackComponent.attackText.text);
-                totalAttack += childAttack;
+                continue;
             }
+
+            // Verificar si el campo attackText del componente es nulo
+            if (attackComponent.attackText == null)
+            {
+                Debug.LogWarning("El campo attackText del componente CardDisplay es nulo en el objeto hijo: " + child.name);
+                continue;
+            }
+
+            // Intentar convertir el texto del campo attackText a un entero
+            int childAttack;
+            if (!int.TryParse(attackComponent.attackText.text, out childAttack))
+            {
+                Debug.LogWarning("No se pudo convertir el texto del campo attackText a un entero en el objeto hijo: " + child.name);
+                continue;
+            }
+
+            // Si todas las verificaciones pasan, sumar el ataque al total
+            totalAttack += childAttack;
         }
         return totalAttack;
     }
+
 }

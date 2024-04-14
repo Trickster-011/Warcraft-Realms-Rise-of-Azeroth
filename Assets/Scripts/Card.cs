@@ -16,11 +16,7 @@ public class Card : ScriptableObject
 	public int attack;
 	public int faction;
 	public bool back;
-	public void Print()
 
-	{
-		Debug.Log(cardName + ": " + description + " The card tip: " + tipCard);
-	}
 	public void ToggleSide()
 	{
 		showFront = !showFront;

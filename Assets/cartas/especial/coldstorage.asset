@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: coldstorage
   m_EditorClassIdentifier: 
   cardName: Camara fria
-  description: Congela todas las unidades cuerpo a cuerpo y asedio disminuyendo su
-    ataque en 2
+  description: Reduce en 2 puntos la fila de cuerpo a cuerpo
   artWorkFront: {fileID: 21300000, guid: 492154a6589563949bf15f673dbf4114, type: 3}
   artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
   showFront: 1

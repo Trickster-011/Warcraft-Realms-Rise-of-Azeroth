@@ -756,6 +756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 0
+  game: {fileID: 0}
   limit: 1
 --- !u!114 &165902325
 MonoBehaviour:
@@ -1222,6 +1223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 8
+  game: {fileID: 0}
   limit: 0
 --- !u!114 &351768283
 MonoBehaviour:
@@ -1376,6 +1378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 0
+  game: {fileID: 0}
   limit: 1
 --- !u!1 &402708793
 GameObject:
@@ -1462,8 +1465,9 @@ GameObject:
   m_Component:
   - component: {fileID: 437107891}
   - component: {fileID: 437107890}
+  - component: {fileID: 437107892}
   m_Layer: 0
-  m_Name: Gamemanager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1500,6 +1504,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &437107892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437107889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1d28d18f3658bc409db0049419f5e6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &481645384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,7 +1530,7 @@ GameObject:
   - component: {fileID: 481645387}
   - component: {fileID: 481645386}
   m_Layer: 5
-  m_Name: aumentoasedio (1)
+  m_Name: aumentorange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1578,6 +1594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 6
+  game: {fileID: 437107890}
   limit: 1
 --- !u!114 &481645388
 MonoBehaviour:
@@ -1923,6 +1940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 6
+  game: {fileID: 0}
   limit: 1
 --- !u!114 &668853769
 MonoBehaviour:
@@ -2508,6 +2526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 6
+  game: {fileID: 0}
   limit: 1
 --- !u!114 &738599420
 MonoBehaviour:
@@ -2802,7 +2821,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deck: []
   deckSize: 26
-  cardDatabase: {fileID: 11400000, guid: 3036233959faeea4cafa87e7a99efeb2, type: 2}
+  cardDatabase: {fileID: 11400000, guid: 2cc2b3a590c532448b545abd1884e6be, type: 2}
   especial: {fileID: 995092453786725917, guid: 1b560028b0909e340b5e204d97f671cd, type: 3}
   gold: {fileID: 3128593153752847204, guid: 37a95db57aa61e642bded586f3f9f242, type: 3}
   platine: {fileID: 3128593153752847204, guid: 7059231cd078fb3409a81addc9bdd8d2, type: 3}
@@ -2942,6 +2961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 6
+  game: {fileID: 0}
   limit: 1
 --- !u!114 &888370125
 MonoBehaviour:
@@ -3145,7 +3165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 2
-  limit: 10
+  game: {fileID: 437107890}
+  limit: 5
 --- !u!1 &918088508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3923,15 +3944,15 @@ RectTransform:
   m_GameObject: {fileID: 1222819088}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.040008545}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0139999, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2143811095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -806, y: -23}
-  m_SizeDelta: {x: -1624.8254, y: -889.6665}
+  m_AnchoredPosition: {x: -783.1829, y: -23}
+  m_SizeDelta: {x: -1579.8215, y: -889.6665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1222819090
 MonoBehaviour:
@@ -3984,6 +4005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 7
+  game: {fileID: 0}
   limit: 3
 --- !u!114 &1222819093
 MonoBehaviour:
@@ -4520,6 +4542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 6
+  game: {fileID: 437107890}
   limit: 1
 --- !u!114 &1425662397
 MonoBehaviour:
@@ -4771,7 +4794,7 @@ GameObject:
   - component: {fileID: 1557315461}
   - component: {fileID: 1557315460}
   m_Layer: 5
-  m_Name: asedio
+  m_Name: asedio2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4809,6 +4832,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 1
+  game: {fileID: 0}
   limit: 10
 --- !u!114 &1557315461
 MonoBehaviour:
@@ -5034,7 +5058,7 @@ GameObject:
   - component: {fileID: 1633572752}
   - component: {fileID: 1633572751}
   m_Layer: 5
-  m_Name: melee
+  m_Name: melee2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5072,6 +5096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 0
+  game: {fileID: 0}
   limit: 10
 --- !u!114 &1633572752
 MonoBehaviour:
@@ -5278,7 +5303,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 0
-  limit: 10
+  game: {fileID: 437107890}
+  limit: 5
 --- !u!1 &1711885971
 GameObject:
   m_ObjectHideFlags: 0
@@ -5542,7 +5568,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 1
-  limit: 10
+  game: {fileID: 437107890}
+  limit: 5
 --- !u!1 &1851417927
 GameObject:
   m_ObjectHideFlags: 0
@@ -5691,7 +5718,7 @@ GameObject:
   - component: {fileID: 1871860103}
   - component: {fileID: 1871860102}
   m_Layer: 5
-  m_Name: aumentoasedio (2)
+  m_Name: aumentomelee
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5755,6 +5782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 6
+  game: {fileID: 437107890}
   limit: 1
 --- !u!114 &1871860104
 MonoBehaviour:
@@ -6049,7 +6077,7 @@ GameObject:
   - component: {fileID: 1938875117}
   - component: {fileID: 1938875116}
   m_Layer: 5
-  m_Name: rango
+  m_Name: rango2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6087,6 +6115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 2
+  game: {fileID: 0}
   limit: 10
 --- !u!114 &1938875117
 MonoBehaviour:
@@ -6281,6 +6310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TypeOfItem: 8
+  game: {fileID: 0}
   limit: 0
 --- !u!114 &1940396966
 MonoBehaviour:

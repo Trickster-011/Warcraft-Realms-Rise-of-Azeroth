@@ -35,10 +35,7 @@ public class Deck : MonoBehaviour
             // Construir el mazo
             BuildDeck();
         }
-        else
-        {
-            Debug.LogError("No se ha asignado una referencia a la base de datos de cartas en el script Deck.");
-        }
+        
     }
 
     // Método para construir el mazo
@@ -51,11 +48,11 @@ public class Deck : MonoBehaviour
         while (deck.Count < deckSize)
         {
             // Seleccionar una carta aleatoria desde la base de datos
-            int randomIndex = Random.Range(0, cardDatabase.cards.Count);
-            Card randomCard = cardDatabase.cards[randomIndex];
-
-            // Añadir la carta al mazo
-            deck.Add(randomCard);
+            foreach(Card card in cardDatabase.cards)
+            {
+            deck.Add(card);
+            }
+            
         }
 
         // Mezclar el mazo después de construirlo
@@ -80,7 +77,10 @@ public class Deck : MonoBehaviour
         if (deck.Count > 0)
         {
             int randomIndex = Random.Range(0, deck.Count);
-            return deck[randomIndex];
+            Card card = deck[randomIndex];
+            deck.RemoveAt(randomIndex);
+            return card;
+            
         }
         else
         {
@@ -102,13 +102,18 @@ public class Deck : MonoBehaviour
             Debug.Log("No se puede agregar más cartas. Límite alcanzado.");
             return;
         }
-
+        if (deckSize<=0) 
+        {
+            Debug.Log("No Hay mas cartas");
+            return;
+        }
         // Obtener una carta aleatoria del mazo
         Card randomCard = GetRandomCard();
 
         if (randomCard != null)
         {
-            RemoveCard(randomCard);
+            
+            Debug.Log(randomCard.ToString());
 
             // Determinar qué prefab usar según el tipo de carta
             GameObject cardPrefabToUse = null;
@@ -140,6 +145,7 @@ public class Deck : MonoBehaviour
                 // Obtener el componente Dragable del nuevo objeto de tarjeta
                 //Dragable newDragable = newCardObject.GetComponent<Dragable>();
                 // Asignar los datos del ScriptableObject de la carta al CardDisplay
+                newCardObject.GetComponent<Dragable>().card = randomCard;
                 switch (randomCard.tipCard)
                 {
                     case "M":
@@ -175,7 +181,8 @@ public class Deck : MonoBehaviour
                         Debug.LogWarning("Tipo de carta no reconocido: " + randomCard.tipCard);
                         break;
                 }
-                newCardDisplay.DisplayCard(randomCard);
+                newCardDisplay.card = randomCard;
+                newCardDisplay.DisplayCard();
                 
                     }
                 

@@ -6,8 +6,20 @@ using UnityEngine.EventSystems;
 public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Dragable.Slot TypeOfItem;
+    public GameManager game;
     public int limit;
 
+    private void Start()
+    {
+        // Buscar el objeto GameManager en la escena y asignarlo a la variable 'game'
+        game = FindObjectOfType<GameManager>();
+
+        // Verificar si se encontró el objeto GameManager
+        if (game == null)
+        {
+            Debug.LogError("No se encontró el objeto GameManager en la escena.");
+        }
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (eventData.pointerDrag == null)
@@ -42,6 +54,8 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
         var d = eventData.pointerDrag.GetComponent<Dragable>();
         if (d != null && !d.isBlocked)
         {
+            Debug.Log("Draggable object detected: " + d.name);
+            //Debug.Log("Card ID: " + d.card.id);
             // Verificar si el objeto padre ya tiene la cantidad máxima de hijos
             if (this.transform.childCount <= limit)
             {
@@ -49,6 +63,7 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                 {
                     d.parentToReturnTo = this.transform;
                     Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                    game.Spell(d.card.id, this.transform);
                     d.BlockDragable();
                 }
                 else if (TypeOfItem == Dragable.Slot.MELEE)
@@ -57,6 +72,7 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                     {
                         d.parentToReturnTo = this.transform;
                         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                        game.Spell(d.card.id, this.transform);
                         d.BlockDragable();
                     }
                 }
@@ -66,6 +82,7 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                     {
                         d.parentToReturnTo = this.transform;
                         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                        game.Spell(d.card.id, this.transform);
                         d.BlockDragable();
                     }
                 }
@@ -75,7 +92,10 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                     {
                         d.parentToReturnTo = this.transform;
                         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                        game.Spell(d.card.id, this.transform);
                         d.BlockDragable();
+                        
+                      
                     }
                 }
             }
