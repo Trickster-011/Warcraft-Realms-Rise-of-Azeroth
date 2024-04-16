@@ -46,7 +46,7 @@ public class ButtonClickListener : MonoBehaviour
             // Instanciar el prefab de la carta y colocarlo en el panel especificado
             GameObject newCard = Instantiate(cardPrefab, panelToSpawnCard);
             // Configurar la visualización de la carta con los datos de randomCard
-            newCard.GetComponent<CardDisplay>().DisplayCard(randomCard);
+            newCard.GetComponent<CardDisplay>().DisplayCard();
             deck.RemoveCard(randomCard);
         }
     }

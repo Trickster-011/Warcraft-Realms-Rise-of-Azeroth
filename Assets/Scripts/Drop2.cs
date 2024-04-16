@@ -76,4 +76,3 @@ public class Drop2 : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointer
         }
     }
 }
-}
