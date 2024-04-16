@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
-  m_Name: Sirvienta del mago
+  m_Name: Martillo
   m_EditorClassIdentifier: 
-  cardName: Sirvienta Del Mago
-  description: Calcula el poder promedio en el campo e iguala el poder de todos a
-    este
-  artWorkFront: {fileID: 21300000, guid: bdcec08c6a237244fb7c8015cfaa86aa, type: 3}
-  artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
+  cardName: Martillo de Uther
+  description: Aumento el poder en 3 puntos
+  artWorkFront: {fileID: 21300000, guid: 75c29c8ab210ecb49b525dd8c6e7c412, type: 3}
+  artWorkBack: {fileID: 21300000, guid: f00b1229e683a7449b49e0384e0fbc1c, type: 3}
   showFront: 1
-  tipCard: MA
-  tipForPrefab: G
-  id: 11
-  attack: 4
-  faction: 0
+  tipCard: AU
+  tipForPrefab: E
+  id: 18
+  attack: 0
+  faction: 1
   back: 0

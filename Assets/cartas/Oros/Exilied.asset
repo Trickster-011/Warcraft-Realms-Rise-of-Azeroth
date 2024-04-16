@@ -19,7 +19,7 @@ MonoBehaviour:
   showFront: 1
   tipCard: M
   tipForPrefab: G
-  id: 20
+  id: 8
   attack: 3
   faction: 0
   back: 0

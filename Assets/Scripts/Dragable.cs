@@ -20,7 +20,8 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     void Start()
     {
-        hoverPanel = GameObject.Find("hover");
+        if(card.faction == 0)hoverPanel = GameObject.Find("hover");
+        else hoverPanel = GameObject.Find("hover2");
     }
 
     public void BlockDragable()
@@ -36,12 +37,7 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         
         //Debug.Log("OnBeginDrag");
-        placeholder = new GameObject();
-        placeholder.transform.SetParent(this.transform.parent);
-        foreach(Transform child in this.transform.parent)
-        {
-            if(child!= this.transform.parent)Debug.Log(child.name);
-        }    
+        placeholder = new GameObject(); 
         LayoutElement le = placeholder.AddComponent<LayoutElement>();
         le.preferredWidth = this.GetComponent<LayoutElement>().preferredWidth;
         le.preferredHeight = this.GetComponent<LayoutElement>().preferredHeight;

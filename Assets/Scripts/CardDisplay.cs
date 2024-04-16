@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CardDisplay : MonoBehaviour
 {
 	public Card card;
-	public int id;
+	public Text id;
 	public Text nameText;
 	public Text descriptionText;
 	public Image artworkImage;
@@ -26,7 +26,7 @@ public class CardDisplay : MonoBehaviour
         // Mostrar otros datos de la carta
         nameText.text = card.cardName;
         descriptionText.text = card.description;
-        id = card.id;
+        id.text = card.id.ToString();
         artworkImage.sprite = card.artWorkFront;
         tipCardText.text = card.tipCard.ToString();
         tipForPrefab.text = card.tipForPrefab.ToString();

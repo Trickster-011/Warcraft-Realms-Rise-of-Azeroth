@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Caballero de la muerte sangre
   m_EditorClassIdentifier: 
   cardName: Caballero Sangre
-  description: Multiplica su podrr por la cantidad de caballeros de sangre en el
+  description: Multiplica su poder por la cantidad de caballeros de sangre en el
     campo
   artWorkFront: {fileID: 21300000, guid: 71e384de806f6a4449b31d35a6b67723, type: 3}
   artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}

@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
-  m_Name: Sirvienta del mago
+  m_Name: Catacum
   m_EditorClassIdentifier: 
-  cardName: Sirvienta Del Mago
-  description: Calcula el poder promedio en el campo e iguala el poder de todos a
-    este
-  artWorkFront: {fileID: 21300000, guid: bdcec08c6a237244fb7c8015cfaa86aa, type: 3}
-  artWorkBack: {fileID: 21300000, guid: 17a07ab8ac086c74fb19113f7e7934cc, type: 3}
+  cardName: Guardian
+  description: Multiplica su poder por cada guardian
+  artWorkFront: {fileID: 21300000, guid: 9c64c43064c422442b49142e8aa8c372, type: 3}
+  artWorkBack: {fileID: 21300000, guid: f00b1229e683a7449b49e0384e0fbc1c, type: 3}
   showFront: 1
-  tipCard: MA
+  tipCard: M
   tipForPrefab: G
-  id: 11
+  id: 22
   attack: 4
-  faction: 0
+  faction: 1
   back: 0

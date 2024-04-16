@@ -8,7 +8,10 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI rangedAttack;
     public TextMeshProUGUI asedioAttack;
     public TextMeshProUGUI totalAttack;
-
+    public TextMeshProUGUI meleeAttack2;
+    public TextMeshProUGUI rangedAttack2;
+    public TextMeshProUGUI asedioAttack2;
+    public TextMeshProUGUI totalAttack2;
     GameObject meleeObject;
     GameObject meleeObject2;
     GameObject rangeObject;
@@ -21,6 +24,8 @@ public class GameManager : MonoBehaviour
     GameObject aumentorangeObject2;
     GameObject aumentoasedioObject;
     GameObject aumentoasedioObject2;
+   public RectTransform panelRectTransform;
+
 
     void Start()
     {
@@ -46,6 +51,15 @@ public class GameManager : MonoBehaviour
         int AsedioAttack = int.Parse(asedioAttack.text);
         int TotalAttack = MeleeAttack + RangeAttack + AsedioAttack;
         totalAttack.text = TotalAttack.ToString();
+        int MeleeAttack2 = int.Parse(meleeAttack2.text);
+        int RangeAttack2 = int.Parse(rangedAttack2.text);
+        int AsedioAttack2 = int.Parse(asedioAttack2.text);
+        int TotalAttack2 = MeleeAttack2 + RangeAttack2 + AsedioAttack2;
+        totalAttack2.text = TotalAttack2.ToString();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Rotate();
+        }
     }
     public void Spell(int id,Transform panel)
     {
@@ -70,10 +84,11 @@ public class GameManager : MonoBehaviour
                 Clima(-3, id);
                 break;
             case 6:
-                Igual(panel, id);
+                Igual(id);
                 break;
-                
-                case 7:
+           case 7:
+                Igual(id);
+                break;
                 case 8:
                 case 9:
                 case 10:
@@ -163,12 +178,83 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    public void Igual(Transform panel, int id)
+    public void Igual( int id)
     {
-        
+        //Debug.Log("igual");
+        GameObject gameObject = meleeObject;
+        int cant = 1;
+        foreach (Transform childTransform in gameObject.GetComponentsInChildren<Transform>(includeInactive: true))
+        {
+            if (childTransform == gameObject.transform)
+            {
+                continue; //saltar el objeto padre
+            }
+            if (childTransform.name.Contains("id"))
+            {  
+                UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                if (textComponent != null)
+                {
+                    int numero = int.Parse(textComponent.text);
+                    if (numero == id)
+                    {
+                        cant++;
+                        Debug.Log(cant);
+                    }    
+                }
+            }
+        }
+        bool flag = false;
+        foreach (Transform childTransform in gameObject.GetComponentsInChildren<Transform>(includeInactive: true))
+        {
+            
+            if (childTransform == gameObject.transform)
+            {
+                continue; //saltar el objeto padre
+            }
+            if(flag == false)
+            {
+                if (childTransform.name.Contains("id"))
+                {
+                    UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                    if (textComponent != null)
+                    {
+                        int numero = int.Parse(textComponent.text);
+                        if (numero == id)
+                        {
+                            flag = true;
+                           // Debug.Log("flag true");
+                        }
+                    }
+                }
+            }
+            else if (flag == true)
+            {
+                //Debug.Log("igual");
+                if (childTransform.name.Contains("Attack"))
+                {
+                    UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                    if (textComponent != null)
+                    {
+                        int numero = int.Parse(textComponent.text);
+                        numero *= cant;
+                        textComponent.text = numero.ToString();
+                       // Debug.Log("numero");
+                        break;
+                    }
+                }
+            }
+            
+        }
     }
-
-
-
-
+    public void Rotate()
+    {
+      
+      Vector3 rotationactual = panelRectTransform.localEulerAngles;
+        rotationactual.z += 180;
+        panelRectTransform.localEulerAngles = rotationactual; 
+    }
 }
+
+
+
+
