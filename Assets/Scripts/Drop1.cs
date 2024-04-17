@@ -8,9 +8,12 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
     public Dragable.Slot TypeOfItem;
     public GameManager game;
     public int limit;
+    TurnSystem turn;
 
     private void Start()
     {
+        GameObject turnobject = GameObject.Find("TurnSystem");
+        turn = turnobject.GetComponent<TurnSystem>();
         // Buscar el objeto GameManager en la escena y asignarlo a la variable 'game'
         game = FindObjectOfType<GameManager>();
 
@@ -64,7 +67,10 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                     d.parentToReturnTo = this.transform;
                     Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
                     game.Spell(d.card.id, this.transform);
+                    game.Rotate();
                     d.BlockDragable();
+                    if(turn.isYourTurn == true)turn.EndYourTurn();
+                    else turn.EndYourOponentTurn();
                 }
                 else if (TypeOfItem == Dragable.Slot.MELEE)
                 {
@@ -73,7 +79,10 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                         d.parentToReturnTo = this.transform;
                         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
                         game.Spell(d.card.id, this.transform);
+                        game.Rotate();
                         d.BlockDragable();
+                        if (turn.isYourTurn == true) turn.EndYourTurn();
+                        else turn.EndYourOponentTurn();
                     }
                 }
                 else if (TypeOfItem == Dragable.Slot.RANGE)
@@ -83,7 +92,10 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                         d.parentToReturnTo = this.transform;
                         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
                         game.Spell(d.card.id, this.transform);
+                        game.Rotate();
                         d.BlockDragable();
+                        if (turn.isYourTurn == true) turn.EndYourTurn();
+                        else turn.EndYourOponentTurn();
                     }
                 }
                 else if (TypeOfItem == Dragable.Slot.ASEDIO)
@@ -93,9 +105,12 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                         d.parentToReturnTo = this.transform;
                         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
                         game.Spell(d.card.id, this.transform);
+                        game.Rotate();
                         d.BlockDragable();
-                        
-                      
+                        if (turn.isYourTurn == true) turn.EndYourTurn();
+                        else turn.EndYourOponentTurn();
+
+
                     }
                 }
             }

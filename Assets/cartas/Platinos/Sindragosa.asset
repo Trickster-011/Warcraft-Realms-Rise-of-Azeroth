@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 81eb0b00d2301bf46bc6666023297025, type: 3}
-  m_Name: Singragosa
+  m_Name: Sindragosa
   m_EditorClassIdentifier: 
   cardName: Sindragosa
   description: Posee la habilidad de poner Camara helada en el campo
