@@ -9,6 +9,7 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
     public GameManager game;
     public int limit;
     TurnSystem turn;
+    public ControladorDeSonidos r;
 
     private void Start()
     {
@@ -54,6 +55,7 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
 
     public void OnDrop(PointerEventData eventData)
     {
+        
         var d = eventData.pointerDrag.GetComponent<Dragable>();
         if (d != null && !d.isBlocked)
         {
@@ -62,6 +64,7 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
             // Verificar si el objeto padre ya tiene la cantidad máxima de hijos
             if (this.transform.childCount <= limit)
             {
+                
                 if (TypeOfItem == d.TypeOfItem)
                 {
                     d.parentToReturnTo = this.transform;
@@ -69,8 +72,20 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                     game.Spell(d.card.id, this.transform);
                     game.Rotate();
                     d.BlockDragable();
-                    if(turn.isYourTurn == true)turn.EndYourTurn();
-                    else turn.EndYourOponentTurn();
+                    if (turn.isYourTurn == true)
+                    {
+                        
+                        r.ReproducirSonidoPlayer1();
+                       
+                        turn.EndYourTurn();
+                    }
+                    else
+                    {
+                        
+                      
+                        r.ReproducirSonidoPlayer2 ();
+                        turn.EndYourOponentTurn();
+                    }
                 }
                 else if (TypeOfItem == Dragable.Slot.MELEE)
                 {
@@ -81,8 +96,20 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                         game.Spell(d.card.id, this.transform);
                         game.Rotate();
                         d.BlockDragable();
-                        if (turn.isYourTurn == true) turn.EndYourTurn();
-                        else turn.EndYourOponentTurn();
+                        if (turn.isYourTurn == true)
+                        {
+                           
+                            r.ReproducirSonidoPlayer1();
+
+                            turn.EndYourTurn();
+                        }
+                        else
+                        {
+                           
+
+                            r.ReproducirSonidoPlayer2();
+                            turn.EndYourOponentTurn();
+                        }
                     }
                 }
                 else if (TypeOfItem == Dragable.Slot.RANGE)
@@ -94,8 +121,20 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                         game.Spell(d.card.id, this.transform);
                         game.Rotate();
                         d.BlockDragable();
-                        if (turn.isYourTurn == true) turn.EndYourTurn();
-                        else turn.EndYourOponentTurn();
+                        if (turn.isYourTurn == true)
+                        {
+                           
+                            r.ReproducirSonidoPlayer1();
+
+                            turn.EndYourTurn();
+                        }
+                        else
+                        {
+                           
+
+                            r.ReproducirSonidoPlayer2();
+                            turn.EndYourOponentTurn();
+                        }
                     }
                 }
                 else if (TypeOfItem == Dragable.Slot.ASEDIO)
@@ -107,8 +146,20 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                         game.Spell(d.card.id, this.transform);
                         game.Rotate();
                         d.BlockDragable();
-                        if (turn.isYourTurn == true) turn.EndYourTurn();
-                        else turn.EndYourOponentTurn();
+                        if (turn.isYourTurn == true)
+                        {
+                            
+                            r.ReproducirSonidoPlayer1();
+
+                            turn.EndYourTurn();
+                        }
+                        else
+                        {
+                           
+
+                            r.ReproducirSonidoPlayer2();
+                            turn.EndYourOponentTurn();
+                        }
 
 
                     }

@@ -1,11 +1,17 @@
 using System.Data;
 using System.Security.Cryptography;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    int lifePlayer = 2;
+    int lifePlayer2 = 2;
+    GameObject hero;
+    GameObject hero2;
     public TextMeshProUGUI meleeAttack;
     public TextMeshProUGUI rangedAttack;
     public TextMeshProUGUI asedioAttack;
@@ -15,8 +21,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI asedioAttack2;
     public TextMeshProUGUI totalAttack2;
     public GameObject cardPrefab;
+    public GameObject cardPrefab2;
+    public GameObject cardPrefab3;
     public Card card;
     public Card card2;
+    public Card card3;
+    public Card card4;
     GameObject meleeObject;
     GameObject manonover;
     GameObject manonover2;
@@ -32,9 +42,9 @@ public class GameManager : MonoBehaviour
     GameObject aumentoasedioObject;
     GameObject aumentoasedioObject2;
     GameObject clima;
-     TurnSystem turn;
-   public RectTransform panelRectTransform;
-
+    TurnSystem turn;
+    public DisplayText textHide;
+    public RectTransform panelRectTransform;
 
     void Start()
     {
@@ -55,6 +65,14 @@ public class GameManager : MonoBehaviour
         clima = GameObject.Find("clima");
         manonover = GameObject.Find("manonover");
         manonover2 = GameObject.Find("manonover2");
+        hero = GameObject.Find("hero");
+        hero2 = GameObject.Find("hero2");
+        GameObject newCard = Instantiate(cardPrefab2, hero.GetComponent<Transform>());
+        newCard.GetComponent<CardDisplay>().card = card3;
+        newCard.GetComponent<CardDisplay>().DisplayCard();
+        GameObject newCard2 = Instantiate(cardPrefab3, hero2.GetComponent<Transform>());
+        newCard2.GetComponent<CardDisplay>().card = card4;
+        newCard2.GetComponent<CardDisplay>().DisplayCard();
     }
 
     void Update()
@@ -69,7 +87,7 @@ public class GameManager : MonoBehaviour
         int AsedioAttack2 = int.Parse(asedioAttack2.text);
         int TotalAttack2 = MeleeAttack2 + RangeAttack2 + AsedioAttack2;
         totalAttack2.text = TotalAttack2.ToString();
-        if(turn.isYourTurn == true)
+        if (turn.isYourTurn == true)
         {
             manonover2.SetActive(true);
             manonover.SetActive(false);
@@ -79,11 +97,153 @@ public class GameManager : MonoBehaviour
             manonover2.SetActive(false);
             manonover.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (turn.yourRound == true && turn.yourOponentRound == true)
         {
-            Rotate();
+            if (TotalAttack > TotalAttack2)
+            {
+                Debug.Log("ganador1");
+                textHide.textObject.text = "Ganador Player1";
+
+                lifePlayer2--;
+                Debug.Log(lifePlayer2);
+                FinishRound();
+            }
+            else if (TotalAttack < TotalAttack2)
+            {
+                Debug.Log("ganador2");
+                textHide.textObject.text = "Ganador Player2";
+
+                lifePlayer--;
+                Debug.Log(lifePlayer);
+                FinishRound();
+            }
+            else
+            {
+                Debug.Log("empate");
+                textHide.textObject.text = "Empate";
+
+                FinishRound();
+            }
+            turn.yourRound = false;
+            turn.yourOponentRound = false;
+
         }
-       
+
+
+        if (lifePlayer <= 0)
+        {
+            Debug.Log("ganadorPlayer2");
+            textHide.textObject.text = "Ganador Player2 Final";
+
+
+            Invoke("action", 5f);
+        }
+        if (lifePlayer2 <= 0)
+        {
+            Debug.Log("ganadorPlayer1");
+            textHide.textObject.text = "Ganador Player1 Final";
+
+
+            Invoke("action", 3f);
+        }
+    }
+    void Hero()
+    {
+        Spell(30, hero.transform);
+    }
+    void Hero2()
+    {
+        Spell(31, hero2.transform);
+    }
+     void action()
+    {
+        SceneManager.LoadScene("Gameover");
+    }
+    private void DisableAllObjects()
+    {
+        // Obtener todos los objetos de la escena
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
+
+        // Desactivar cada objeto
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj != gameObject && obj.name != "Camera") // No desactivar este objeto GameManager
+            {
+                obj.SetActive(false);
+            }
+        }
+    }
+    public void FinishRound()
+    {
+            Transform transform = meleeObject2.GetComponent<Transform>();
+            int cantMelee2 = transform.childCount;
+            transform = rangeObject2.GetComponent<Transform>();
+            int cantRange2 = transform.childCount;
+            transform = asedioObject2.GetComponent<Transform>();
+            int cantAsedio2 = transform.childCount;
+            transform = clima.GetComponent<Transform>();
+            int cantClima = transform.childCount;
+        transform = aumentoasedioObject.GetComponent<Transform>();
+        if(transform.childCount>0) Destroy(transform.GetChild(0).gameObject);
+        transform = aumentoasedioObject2.GetComponent<Transform>();
+        if(transform.childCount > 0) Destroy(transform.GetChild(0).gameObject);
+        transform = aumentomeleeObject.GetComponent<Transform>();
+        if(transform.childCount > 0) Destroy(transform.GetChild(0).gameObject);
+        transform = aumentomeleeObject2.GetComponent<Transform>();
+        if (transform.childCount > 0) Destroy(transform.GetChild(0).gameObject);
+        transform = aumentorangeObject.GetComponent<Transform>();
+        if (transform.childCount > 0) Destroy(transform.GetChild(0).gameObject);
+        transform = aumentorangeObject2.GetComponent<Transform>();
+        if (transform.childCount > 0) Destroy(transform.GetChild(0).gameObject);
+        for (int i = 0; i < cantClima; ++i)
+              {
+                transform = clima.GetComponent<Transform>();
+                GameObject hijoActual = transform.GetChild(i).gameObject;
+                Destroy(hijoActual);
+                }
+                for (int i = 0; i < cantMelee2; ++i)
+                {
+                    transform = meleeObject2.GetComponent<Transform>();
+                    GameObject hijoActual = transform.GetChild(i).gameObject;
+                    Destroy(hijoActual);
+                }
+                for (int i = 0; i < cantRange2; ++i)
+                {
+                    transform = rangeObject2.GetComponent<Transform>();
+                    GameObject hijoActual = transform.GetChild(i).gameObject;
+                    Destroy(hijoActual);
+                }
+                for (int i = 0; i < cantAsedio2; ++i)
+                {
+                    transform = asedioObject2.GetComponent<Transform>();
+                    GameObject hijoActual = transform.GetChild(i).gameObject;
+                    Destroy(hijoActual);
+                }     
+            transform = meleeObject.GetComponent<Transform>();
+            int cantMelee = transform.childCount;
+            transform = rangeObject.GetComponent<Transform>();
+            int cantRange = transform.childCount;
+            transform = asedioObject.GetComponent<Transform>();
+            int cantAsedio = transform.childCount;
+                for (int i = 0; i < cantMelee; ++i)
+                {
+                    transform = meleeObject.GetComponent<Transform>();
+                    GameObject hijoActual = transform.GetChild(i).gameObject;
+                    Destroy(hijoActual);
+                }
+                for (int i = 0; i < cantRange; ++i)
+                {
+                    transform = rangeObject.GetComponent<Transform>();
+                    GameObject hijoActual = transform.GetChild(i).gameObject;
+                    Destroy(hijoActual);
+                }  
+                for (int i = 0; i < cantAsedio; ++i)
+                {
+                    transform = asedioObject.GetComponent<Transform>();
+                    GameObject hijoActual = transform.GetChild(i).gameObject;
+                    Destroy(hijoActual);
+                }
+               
     }
     public void Spell(int id,Transform panel)
     {
@@ -171,6 +331,10 @@ public class GameManager : MonoBehaviour
                 GameObject newCard2 = Instantiate(cardPrefab, clima.GetComponent<Transform>());
                 newCard2.GetComponent<CardDisplay>().card = card2;
                 newCard2.GetComponent<CardDisplay>().DisplayCard();
+                break;
+            case 30:
+                break;
+            case 31:
                 break;
         }
     }
@@ -614,7 +778,7 @@ public class GameManager : MonoBehaviour
         }
 
         
-        Destroy(transParent.gameObject);
+        if(transParent!= null)Destroy(transParent.gameObject);
              }
     else if(faction == 1)
         {
@@ -677,7 +841,7 @@ public class GameManager : MonoBehaviour
             }
 
 
-            Destroy(transParent.gameObject);
+            if (transParent != null) Destroy(transParent.gameObject);
         }
     }
 
@@ -742,7 +906,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-           if(transParent.gameObject!= null) Destroy(transParent.gameObject);
+           if(transParent!= null) Destroy(transParent.gameObject);
      }
         else if(faction == 1)
         {
@@ -802,7 +966,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            Destroy(transParent.gameObject);
+            if (transParent != null) Destroy(transParent.gameObject);
         }
         
     }
