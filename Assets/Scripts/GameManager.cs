@@ -1,4 +1,5 @@
 using System.Data;
+using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using TMPro;
 using UnityEditor;
@@ -8,6 +9,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    bool Hero1 = false;
+    bool Hero2 = false;
     int lifePlayer = 2;
     int lifePlayer2 = 2;
     GameObject hero;
@@ -20,6 +23,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI rangedAttack2;
     public TextMeshProUGUI asedioAttack2;
     public TextMeshProUGUI totalAttack2;
+    public TextMeshProUGUI lifeP1;
+    public TextMeshProUGUI lifeP2;
     public GameObject cardPrefab;
     public GameObject cardPrefab2;
     public GameObject cardPrefab3;
@@ -77,6 +82,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        lifeP1.text = "vidas "+lifePlayer.ToString();
+        lifeP2.text = "vidas "+lifePlayer2.ToString();
         int MeleeAttack = int.Parse(meleeAttack.text);
         int RangeAttack = int.Parse(rangedAttack.text);
         int AsedioAttack = int.Parse(asedioAttack.text);
@@ -105,6 +112,8 @@ public class GameManager : MonoBehaviour
                 textHide.textObject.text = "Ganador Player1";
 
                 lifePlayer2--;
+                Hero1 = false;
+                Hero2 = false;
                 Debug.Log(lifePlayer2);
                 FinishRound();
             }
@@ -114,6 +123,8 @@ public class GameManager : MonoBehaviour
                 textHide.textObject.text = "Ganador Player2";
 
                 lifePlayer--;
+                Hero1 = false;
+                Hero2 = false;
                 Debug.Log(lifePlayer);
                 FinishRound();
             }
@@ -121,7 +132,10 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("empate");
                 textHide.textObject.text = "Empate";
-
+                lifePlayer--;
+                lifePlayer2--;
+                Hero1 = false;
+                Hero2 = false;
                 FinishRound();
             }
             turn.yourRound = false;
@@ -147,14 +161,8 @@ public class GameManager : MonoBehaviour
             Invoke("action", 3f);
         }
     }
-    void Hero()
-    {
-        Spell(30, hero.transform);
-    }
-    void Hero2()
-    {
-        Spell(31, hero2.transform);
-    }
+   
+
      void action()
     {
         SceneManager.LoadScene("Gameover");
@@ -259,7 +267,12 @@ public class GameManager : MonoBehaviour
                 //Debug.Log(panel.name);
                 break;
             case 3:
-                Aumento(panel, 0);
+                Despeje();
+                Despeje();
+                break;
+            case 19:
+                Despeje();
+                Despeje();
                 break;
             case 4:
                 Aumento(panel, 3);
@@ -542,7 +555,7 @@ public class GameManager : MonoBehaviour
        int cantRange2 = transform.childCount;
        transform = asedioObject2.GetComponent<Transform>();
        int cantAsedio2 = transform.childCount;
-        if(cantMelee2 <= cantRange2 && cantMelee2 <= cantAsedio2)
+        if(cantMelee2 <= cantRange2 && cantMelee2 <= cantAsedio2 && cantMelee2!=0)
         {
             for(int i = 0; i < cantMelee2; ++i)
             {
@@ -551,7 +564,7 @@ public class GameManager : MonoBehaviour
                 Destroy(hijoActual);
             }
         }
-        else if (cantRange2 <= cantAsedio2 && cantRange2 <= cantMelee2)
+        else if (cantRange2 <= cantAsedio2 && cantRange2 <= cantMelee2 && cantRange2!=0)
         {
             for (int i = 0; i < cantMelee2; ++i)
             {
@@ -560,7 +573,7 @@ public class GameManager : MonoBehaviour
                 Destroy(hijoActual);
             }
         }
-        else if(cantAsedio2 <= cantMelee2 && cantAsedio2 <= cantRange2)
+        else if(cantAsedio2 <= cantMelee2 && cantAsedio2 <= cantRange2 && cantAsedio2 != 0)
         {
             for (int i = 0; i < cantMelee2; ++i)
             {
@@ -578,7 +591,7 @@ public class GameManager : MonoBehaviour
             int cantRange = transform.childCount;
             transform = asedioObject.GetComponent<Transform>();
             int cantAsedio = transform.childCount;
-            if (cantMelee <= cantRange && cantMelee <= cantAsedio)
+            if (cantMelee <= cantRange && cantMelee <= cantAsedio && cantMelee != 0)
             {
                 for (int i = 0; i < cantMelee; ++i)
                 {
@@ -587,7 +600,7 @@ public class GameManager : MonoBehaviour
                     Destroy(hijoActual);
                 }
             }
-            else if (cantRange <= cantMelee && cantRange <= cantAsedio)
+            else if (cantRange <= cantMelee && cantRange <= cantAsedio && cantRange != 0)
             {
                 for (int i = 0; i < cantRange; ++i)
                 {
@@ -596,7 +609,7 @@ public class GameManager : MonoBehaviour
                     Destroy(hijoActual);
                 }
             }
-            else if (cantAsedio <= cantMelee && cantAsedio <= cantRange)
+            else if (cantAsedio <= cantMelee && cantAsedio <= cantRange && cantAsedio != 0)
             {
                 for (int i = 0; i < cantAsedio; ++i)
                 {
@@ -844,7 +857,16 @@ public class GameManager : MonoBehaviour
             if (transParent != null) Destroy(transParent.gameObject);
         }
     }
-
+    public void Despeje()
+    {
+        Transform tranform =  clima.GetComponent<Transform>();
+        int cant = tranform.childCount;
+        for(int i = 0; i < cant; i++) 
+        {
+        Transform child = tranform.GetChild(i);
+            Destroy(child.gameObject);
+        }
+    }
     public void MinDelete(int faction)
     {
         
@@ -970,6 +992,125 @@ public class GameManager : MonoBehaviour
         }
         
     }
+    public void Lich ()
+    {
+        if (Hero1 == true) return;
+        else {
+            Rotate();
+            turn.isYourTurn=false;
+        
+        foreach (Transform childTransform in meleeObject2.GetComponentsInChildren<Transform>(includeInactive: true))
+        {
+            if (childTransform.name.Contains("Attack"))
+            {
+                UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                if (textComponent != null)
+                {
+                    int numero = int.Parse(textComponent.text);
+                    numero /=2;
+                    textComponent.text = numero.ToString();
+                    // Debug.Log("numero");
+                    break;
+                }
+            }
+        }
+    
+        foreach (Transform childTransform in asedioObject2.GetComponentsInChildren<Transform>(includeInactive: true))
+        {
+            if (childTransform.name.Contains("Attack"))
+            {
+                UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                if (textComponent != null)
+                {
+                    int numero = int.Parse(textComponent.text);
+                    numero /= 2;
+                    textComponent.text = numero.ToString();
+                    // Debug.Log("numero");
+                    break;
+                }
+            }
+        }
+        
+        foreach (Transform childTransform in rangeObject2.GetComponentsInChildren<Transform>(includeInactive: true))
+        {
+            if (childTransform.name.Contains("Attack"))
+            {
+                UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                if (textComponent != null)
+                {
+                    int numero = int.Parse(textComponent.text);
+                    numero /= 2;
+                    textComponent.text = numero.ToString();
+                    // Debug.Log("numero");
+                    break;
+                }
+            }
+        }
+        Hero1 = true;
+         }
+        }
+    public void Varian()
+    {
+        if (Hero2 == true) return;
+        else {
+            Rotate();
+            turn.isYourTurn = true;
+        
+
+        foreach (Transform childTransform in meleeObject.GetComponentsInChildren<Transform>(includeInactive: true))
+        {
+            if (childTransform.name.Contains("Attack"))
+            {
+                UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                if (textComponent != null)
+                {
+                    int numero = int.Parse(textComponent.text);
+                    numero -= 4;
+                    if(numero < 0) numero = 0;
+                    textComponent.text = numero.ToString();
+                    // Debug.Log("numero");
+                    break;
+                }
+            }
+        }
+
+        foreach (Transform childTransform in asedioObject.GetComponentsInChildren<Transform>(includeInactive: true))
+        {
+            if (childTransform.name.Contains("Attack"))
+            {
+                UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                if (textComponent != null)
+                {
+                    int numero = int.Parse(textComponent.text);
+                    numero -= 4;
+                    if (numero < 0) numero = 0;
+                    textComponent.text = numero.ToString();
+                    // Debug.Log("numero");
+                    break;
+                }
+            }
+        }
+
+        foreach (Transform childTransform in rangeObject.GetComponentsInChildren<Transform>(includeInactive: true))
+        {
+            if (childTransform.name.Contains("Attack"))
+            {
+                UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                if (textComponent != null)
+                {
+                    int numero = int.Parse(textComponent.text);
+                    numero -= 4;
+                    if (numero < 0) numero = 0;
+                    textComponent.text = numero.ToString();
+                    // Debug.Log("numero");
+                    break;
+                }
+            }
+        }
+        Hero2 = true;
+             }
+        }
+
     public void Rotate()
     {
       
