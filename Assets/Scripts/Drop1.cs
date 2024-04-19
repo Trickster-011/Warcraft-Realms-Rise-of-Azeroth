@@ -69,8 +69,9 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                 {
                     d.parentToReturnTo = this.transform;
                     Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
-                    game.Spell(d.card.id, this.transform);
+                    game.Spell(d.card.id,transform);
                     game.Rotate();
+                    game.Check(transform, eventData.pointerDrag);
                     d.BlockDragable();
                     if (turn.isYourTurn == true)
                     {
@@ -93,8 +94,10 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                     {
                         d.parentToReturnTo = this.transform;
                         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
+                       game.Check(transform, eventData.pointerDrag);
                         game.Spell(d.card.id, this.transform);
                         game.Rotate();
+                       
                         d.BlockDragable();
                         if (turn.isYourTurn == true)
                         {
@@ -119,6 +122,7 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                         d.parentToReturnTo = this.transform;
                         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
                         game.Spell(d.card.id, this.transform);
+                         game.Check(transform, eventData.pointerDrag);
                         game.Rotate();
                         d.BlockDragable();
                         if (turn.isYourTurn == true)
@@ -144,6 +148,7 @@ public class Drop : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerE
                         d.parentToReturnTo = this.transform;
                         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
                         game.Spell(d.card.id, this.transform);
+                       game.Check(transform, eventData.pointerDrag);
                         game.Rotate();
                         d.BlockDragable();
                         if (turn.isYourTurn == true)

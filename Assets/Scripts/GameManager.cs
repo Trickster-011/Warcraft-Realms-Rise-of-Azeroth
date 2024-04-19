@@ -112,6 +112,7 @@ public class GameManager : MonoBehaviour
                 textHide.textObject.text = "Ganador Player1";
 
                 lifePlayer2--;
+                turn.isYourTurn = true;
                 Hero1 = false;
                 Hero2 = false;
                 Debug.Log(lifePlayer2);
@@ -121,8 +122,8 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("ganador2");
                 textHide.textObject.text = "Ganador Player2";
-
                 lifePlayer--;
+                turn.isYourTurn = false;
                 Hero1 = false;
                 Hero2 = false;
                 Debug.Log(lifePlayer);
@@ -150,7 +151,7 @@ public class GameManager : MonoBehaviour
             textHide.textObject.text = "Ganador Player2 Final";
 
 
-            Invoke("action", 5f);
+            Invoke("action", 3f);
         }
         if (lifePlayer2 <= 0)
         {
@@ -386,6 +387,7 @@ public class GameManager : MonoBehaviour
             // Verificar si el nombre del objeto hijo contiene "Attack"
             if (childTransform.name.Contains("Attack"))
             {
+
                 UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
                 if (textComponent != null)
                 {
@@ -991,6 +993,125 @@ public class GameManager : MonoBehaviour
             if (transParent != null) Destroy(transParent.gameObject);
         }
         
+    }
+    public void Check(Transform panel , GameObject obj)
+    {
+        GameObject aumento = null;
+        switch (panel.name)
+        {
+            case "melee":
+                aumento = aumentomeleeObject;
+                break;
+            case "melee2":
+                aumento = aumentomeleeObject2;
+                break;
+            case "range":
+                aumento = aumentorangeObject;
+                break;
+            case "range2":
+                aumento = aumentorangeObject2;
+                break;
+            case "asedio":
+                aumento = aumentoasedioObject;
+                break;
+            case "asedio2":
+                aumento = aumentoasedioObject2;
+                break;
+        }
+        Transform transform = aumento.GetComponent<Transform>();
+        if (transform.childCount > 0)
+        {
+            int numero = 0;
+            foreach (Transform childTransform in aumento.GetComponentsInChildren<Transform>(includeInactive: true))
+            {
+                if (childTransform.name.Contains("id"))
+                {
+                    UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                    if (textComponent != null)
+                    {
+                        numero = int.Parse(textComponent.text);
+
+                    }
+                }
+            }
+            int cant = 0;
+            switch(numero)
+            {
+                case 1:
+                    cant = 1;
+                    break;
+                case 4:
+                    cant = 3;
+                    break;
+                case 18:
+                    cant = 3;
+                    break;
+                case 28:
+                    cant = 4;
+                    break;
+            }
+            foreach (Transform childTransform in obj.GetComponentsInChildren<Transform>(includeInactive: true))
+            {
+                if (childTransform.name.Contains("Attack"))
+                {
+                    UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                    if (textComponent != null)
+                    {
+                        numero = int.Parse(textComponent.text);
+                        numero += cant;
+                        textComponent.text = numero.ToString();
+
+                    }
+                }
+            }
+        }
+        if(clima.transform.childCount > 0) 
+        {
+            int numero = 0;
+            foreach (Transform childTransform in clima.GetComponentsInChildren<Transform>(includeInactive: true))
+            {
+                if (childTransform.name.Contains("id"))
+                {
+                    UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                    if (textComponent != null)
+                    {
+                        numero = int.Parse(textComponent.text);
+                    }
+                }
+            }
+            int cant = 0;
+            
+            switch (numero)
+            {
+                case 2:
+                    if (panel.name ==  "melee" || panel.name == "melee2")cant = -2;
+                    break;
+                case 5:
+                    if (panel.name == "range" || panel.name == "range2") cant = -3;
+                    break;
+                case 16:
+                    if (panel.name == "asedio" || panel.name == "asedio2") cant = -4;
+                    break;
+                case 17:
+                    if (panel.name == "melee" || panel.name == "melee2") cant = -2;
+                    break;
+            }
+            foreach (Transform childTransform in obj.GetComponentsInChildren<Transform>(includeInactive: true))
+            {
+                if (childTransform.name.Contains("Attack"))
+                {
+                    UnityEngine.UI.Text textComponent = childTransform.GetComponent<UnityEngine.UI.Text>();
+                    if (textComponent != null)
+                    {
+                        numero = int.Parse(textComponent.text);
+                        numero += cant;
+                        if (numero < 0) numero = 0;
+                        textComponent.text = numero.ToString();
+
+                    }
+                }
+            }
+        }
     }
     public void Lich ()
     {

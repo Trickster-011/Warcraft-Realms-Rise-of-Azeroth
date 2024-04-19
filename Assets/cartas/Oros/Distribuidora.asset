@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Distribuidora
   m_EditorClassIdentifier: 
   cardName: Distribuidora
-  description: Roba 1 carta del enemigo
+  description: 
   artWorkFront: {fileID: 21300000, guid: d83f016a7251caa4b974faa7950fa292, type: 3}
   artWorkBack: {fileID: 21300000, guid: f00b1229e683a7449b49e0384e0fbc1c, type: 3}
   showFront: 1
