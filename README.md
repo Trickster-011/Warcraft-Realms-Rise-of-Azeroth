@@ -3,7 +3,7 @@
 Juego de cartas 
 Proyecto de ciencias de la computacion, Ian Carlos Aguirre Gonzalez.
 Por favor respetar la privacidad de este y el esfuerzo y sacrificio con el que fue creado.
-_Acá va un párrafo que describa lo que es el proyecto_
+
 ## Contacto
 https://t.me/Ian_Carlos101 Telegram.
 +53 55301007 Numero de telefono.
