@@ -4,7 +4,10 @@ Juego de cartas
 Proyecto de ciencias de la computacion, Ian Carlos Aguirre Gonzalez.
 Por favor respetar la privacidad de este y el esfuerzo y sacrificio con el que fue creado.
 _Acá va un párrafo que describa lo que es el proyecto_
-
+## Contacto
+https://t.me/Ian_Carlos101 Telegram.
++53 55301007 Numero de telefono.
+iancarlosaguirre@gmail.com Gmail.
 ## Comenzando 🚀
 
 Warcraft Realm: Rise of Azeroth es un juego de cartas donde cada jugador tiene acceso a un deck, una fila para asedio, una fila para unidades de combate cuerpo a cuerpo (melee), una fila para unidades de combate a distancia (rango), y zonas de aumento y clima compartidas. En cada turno, los jugadores pueden colocar una carta, pasar, o usar el efecto del héroe. Al pasar, el jugador renuncia a jugar durante toda la ronda hasta que el oponente haga lo mismo.
