@@ -13,8 +13,13 @@ public class GameManager : MonoBehaviour
     bool Hero2 = false;
     int lifePlayer = 2;
     int lifePlayer2 = 2;
+
     GameObject hero;
     GameObject hero2;
+    public Deck deck1;
+    public Deck deck2;
+    public Text cantdeck1;
+    public Text cantdeck2;
     public TextMeshProUGUI meleeAttack;
     public TextMeshProUGUI rangedAttack;
     public TextMeshProUGUI asedioAttack;
@@ -82,6 +87,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        cantdeck1.text = deck1.deck.Count.ToString();
+        cantdeck2.text = deck2.deck.Count.ToString();
         lifeP1.text = "vidas "+lifePlayer.ToString();
         lifeP2.text = "vidas "+lifePlayer2.ToString();
         int MeleeAttack = int.Parse(meleeAttack.text);
@@ -1005,10 +1012,10 @@ public class GameManager : MonoBehaviour
             case "melee2":
                 aumento = aumentomeleeObject2;
                 break;
-            case "range":
+            case "rango":
                 aumento = aumentorangeObject;
                 break;
-            case "range2":
+            case "rango2":
                 aumento = aumentorangeObject2;
                 break;
             case "asedio":
